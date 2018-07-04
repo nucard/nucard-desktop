@@ -1,0 +1,10 @@
+<mat-list>
+    <mat-list-item *ngFor="let card of cards">
+        <img matListAvatar [src]="card.thumbnail" [alt]="card.name">
+        <h3 matLine>{{card.name}}</h3>
+        <p matLine>
+            <span *ngFor="let type of card.types">{{type}} </span> |
+            <span *ngFor="let type of card.subtypes">{{type}} </span>
+        </p>
+    </mat-list-item>
+</mat-list>

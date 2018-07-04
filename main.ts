@@ -7,18 +7,25 @@ const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 
 function createWindow() {
-    console.log('things and stuff');
-
     const electronScreen = screen;
     const size = electronScreen.getPrimaryDisplay().workAreaSize;
+
+    const appWindowWidth = size.width / 2;
+    const appWindowHeight = size.height / 2;
+    const appWindowX = (size.width / 2) - (appWindowWidth / 2);
+    const appWindowY = (size.height / 2) - (appWindowHeight / 2);
 
     // Create the browser window.
     win = new BrowserWindow({
         frame: false,
-        x: 0,
-        y: 0,
-        width: size.width,
-        height: size.height
+        x: appWindowX,
+        y: appWindowY,
+        width: appWindowWidth,
+        height: appWindowHeight,
+        fullscreenable: false,
+        maximizable: false,
+        transparent: true,
+        useContentSize: true,
     });
 
     if (serve) {
@@ -48,10 +55,8 @@ function createWindow() {
 function loadGlobalShortcuts() {
     // Register a 'CommandOrControl+X' shortcut listener.
     const ret = globalShortcut.register('CommandOrControl+Space', () => {
-        console.log('CommandOrControl+Space is pressed');
-
         if (win.isMinimized()) {
-            win.maximize();
+            win.restore();
         } else {
             win.minimize();
         }
@@ -60,15 +65,9 @@ function loadGlobalShortcuts() {
     if (!ret) {
         console.log('registration failed');
     }
-
-    // Check whether a shortcut is registered.
-    console.log(globalShortcut.isRegistered('CommandOrControl+Space'));
 }
 
 try {
-    // This method will be called when Electron has finished
-    // initialization and is ready to create browser windows.
-    // Some APIs can only be used after this event occurs.
     app.on('ready', createWindow);
     app.on('ready', loadGlobalShortcuts);
 
@@ -89,6 +88,5 @@ try {
         }
     });
 } catch (e) {
-    // Catch Error
-    // throw e;
+    throw e;
 }

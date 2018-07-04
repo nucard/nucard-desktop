@@ -84,7 +84,7 @@
     ],
     "prefer-const": true,
     "quotemark": [
-      true,
+      false,
       "single"
     ],
     "radix": true,
@@ -119,7 +119,7 @@
     "component-selector": [
       true,
       "element",
-      "app",
+      "nucard",
       "kebab-case"
     ],
     "no-output-on-prefix": true,

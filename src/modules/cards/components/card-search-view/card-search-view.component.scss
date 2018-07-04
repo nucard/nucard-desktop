@@ -1,0 +1,15 @@
+.card-search-view-component {
+    width: 100%; 
+
+    mat-form-field {
+        width: 100%;
+    }
+
+    .layout {
+        position: relative;
+    }
+    input {
+        font-size: 2.5rem;
+        width: 100%;
+    }
+}
