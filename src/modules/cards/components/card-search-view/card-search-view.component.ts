@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Card, CardsService } from '../../services/cards.service';
 
 @Component({
@@ -6,14 +6,11 @@ import { Card, CardsService } from '../../services/cards.service';
     templateUrl: './card-search-view.component.html',
     styleUrls: ['./card-search-view.component.scss']
 })
-export class CardSearchViewComponent implements OnInit {
+export class CardSearchViewComponent {
     cards: Card[];
     query: string;
 
     constructor(private cardsService: CardsService) { }
-
-    ngOnInit() {
-    }
 
     async onQueryChanged() {
         if (this.query && this.query.length > 2) {
