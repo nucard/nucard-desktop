@@ -9,12 +9,17 @@ import { Card, CardsService } from '../../services/cards.service';
 export class CardSearchViewComponent {
     cards: Card[];
     query: string;
+    isSearching = false;
 
     constructor(private cardsService: CardsService) { }
 
+    getSearchPrompt() {
+        return `Try "Lightning Bolt"`;
+    }
+
     async onQueryChanged() {
-        if (this.query && this.query.length > 2) {
-            this.cards = await this.cardsService.search(this.query);
-        }
+        this.isSearching = true;
+        this.cards = await this.cardsService.search(this.query);
+        this.isSearching = false;
     }
 }

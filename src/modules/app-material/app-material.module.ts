@@ -6,6 +6,7 @@ import {
     MatDividerModule,
     MatInputModule,
     MatListModule,
+    MatProgressSpinnerModule,
 } from '@angular/material';
 
 
@@ -17,6 +18,7 @@ import {
         MatDividerModule,
         MatInputModule,
         MatListModule,
+        MatProgressSpinnerModule
     ],
     declarations: [],
     exports: [
@@ -25,6 +27,7 @@ import {
         MatDividerModule,
         MatInputModule,
         MatListModule,
+        MatProgressSpinnerModule
     ]
 })
 export class AppMaterialModule { }
