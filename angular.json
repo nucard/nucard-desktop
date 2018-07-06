@@ -25,7 +25,8 @@
                             "src/favicon.512x512.png"
                         ],
                         "styles": [
-                            "src/styles.scss"
+                            "src/styles.scss",
+                            "src/styles/nucard-theme.scss"
                         ],
                         "scripts": []
                     },
@@ -95,7 +96,8 @@
                         "karmaConfig": "src/karma.conf.js",
                         "scripts": [],
                         "styles": [
-                            "src/styles.scss"
+                            "src/styles.scss",
+                            "src/styles/nucard-theme.scss"
                         ],
                         "assets": [
                             "src/assets",
@@ -149,11 +151,11 @@
     "defaultProject": "angular-electron",
     "schematics": {
         "@schematics/angular:component": {
-            "prefix": "nucard",
+            "prefix": "nc",
             "styleext": "scss"
         },
         "@schematics/angular:directive": {
-            "prefix": "nucard"
+            "prefix": "nc"
         }
     }
 }

@@ -60,3 +60,10 @@ table {
 
 /* ANGULAR MATERIAL THEMING */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* NGX-MD STYLING */
+ngx-md {
+	em {
+		font-style: italic;
+	}
+}

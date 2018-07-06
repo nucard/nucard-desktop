@@ -1,13 +1,13 @@
 <mat-list class="card-result-component">
-    <mat-list-item *ngFor="let card of cards">
+    <mat-list-item *ngFor="let card of cards" (click)="cardClick(card)">
         <img matListAvatar [src]="card.thumbnail" [alt]="card.name">
         <h2 matLine>{{card.name}}</h2>
         <p class="types" matLine>
             <span *ngFor="let type of card.types">{{type}} </span> |
-            <span *ngFor="let type of card.subtypes">{{type}} </span>
+            <span *ngFor="let subtype of card.subtypes">{{subtype}} </span>
         </p>
         <div class="costs" matLine>
-            <img *ngFor="let cost of card.cost" [src]="cost" [alt]="cost">
+            <nc-card-cost [card]="card"></nc-card-cost>
         </div>
     </mat-list-item>
 </mat-list>

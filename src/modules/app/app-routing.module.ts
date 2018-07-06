@@ -1,7 +1,7 @@
-import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CardSearchViewComponent } from '../cards/components/card-search-view/card-search-view.component';
+import { CardViewComponent } from '../cards/components/card-view/card-view.component';
 
 const routes: Routes = [
     {
@@ -12,6 +12,10 @@ const routes: Routes = [
     {
         path: 'card-search',
         component: CardSearchViewComponent
+    },
+    {
+        path: 'card/:cardName',
+        component: CardViewComponent
     }
 ];
 

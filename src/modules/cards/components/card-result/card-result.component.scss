@@ -1,4 +1,8 @@
 .card-result-component {
+    mat-list-item {
+        cursor: pointer;
+    }
+    
     h2 {
         font-size: 1.2rem;
     }

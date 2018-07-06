@@ -11,13 +11,13 @@ function createWindow() {
     const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
     const appWindowWidth = size.width / 2;
-    const appWindowHeight = size.height / 2;
+    const appWindowHeight = 600;
     const appWindowX = (size.width / 2) - (appWindowWidth / 2);
     const appWindowY = (size.height / 2) - (appWindowHeight / 2);
 
     // Create the browser window.
     win = new BrowserWindow({
-        frame: false,
+        //        frame: false,
         x: appWindowX,
         y: appWindowY,
         width: appWindowWidth,

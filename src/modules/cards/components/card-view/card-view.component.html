@@ -1,0 +1,48 @@
+<div class="card-view-component" *ngIf="card">
+    <div class="flex-container">
+        <div class="image-container">
+            <img class="card-image" [src]="_selectedPrinting.image" [alt]="card.name">
+        </div>
+        <div class="info-container">
+            <h1>{{card.name}}</h1>
+            <h2>
+                <span *ngIf="card.rarity">
+                    <strong>{{card.rarity}} </strong>
+                </span>
+                <span *ngFor="let type of card.types">{{type}} </span>
+            </h2>
+
+            <div>
+                <div class="stat">
+                    <div class="mat-caption">Cost</div>
+                    <div class="mat-input">
+                        <nc-card-cost [card]="card"></nc-card-cost>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div class="mat-caption">Type</div>
+                    <div class="mat-input">
+                        <span *ngFor="let type of card.types">{{type}} </span>
+                        <span *ngIf="card.subtypes && card.subtypes.length"> | </span>
+                        <span *ngFor="let type of card.subtypes">{{type}} </span>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div class="mat-caption">Text</div>
+                    <ngx-md class="mat-input" [data]="card.text"></ngx-md>
+                </div>
+
+                <div class="stat" *ngIf="_selectedPrinting.artist">
+                    <div class="mat-caption">Artist</div>
+                    <div class="mat-input">{{_selectedPrinting.artist}}</div>
+                </div>
+
+                <div class="stat flavor-text" *ngIf="_selectedPrinting.flavorText">
+                    {{_selectedPrinting.flavorText}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

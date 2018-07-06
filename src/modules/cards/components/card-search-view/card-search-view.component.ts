@@ -8,6 +8,7 @@ import { Card, CardsService } from '../../services/cards.service';
 })
 export class CardSearchViewComponent {
     cards: Card[];
+    selectedCard: Card;
     query: string;
     isSearching = false;
 
@@ -19,7 +20,13 @@ export class CardSearchViewComponent {
 
     async onQueryChanged() {
         this.isSearching = true;
+        this.selectedCard = null;
         this.cards = await this.cardsService.search(this.query);
         this.isSearching = false;
+    }
+
+    cardSelected(card: Card) {
+        this.cards = null;
+        this.selectedCard = card;
     }
 }

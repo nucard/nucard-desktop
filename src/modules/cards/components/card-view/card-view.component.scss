@@ -1,0 +1,41 @@
+.card-view-component {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        margin-top: -1.6rem;
+        font-weight: 300;
+    }
+
+    h2 strong {
+        font-weight: 500;
+    }
+
+    .flex-container {
+        display: flex;
+
+        .image-container {
+            margin-right: 2rem;
+        }
+
+        .info-container {
+            flex-grow: 1;
+        }
+    }
+    
+    img.card-image {
+        border-radius: 12px;
+    }
+
+    .stat {
+        margin-bottom: 1rem;
+
+        .flavor-text {
+            font-style: italic;
+        }
+    }
+}
