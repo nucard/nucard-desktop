@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxMdModule } from 'ngx-md';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { AppRoutingModule } from '../app/app-routing.module';
-
+import { KeyboardEventsModule } from '../keyboard-events/keyboard-events.module';
 import { CardsService } from './services/cards.service';
 
 import { CardCostComponent } from './components/card-cost/card-cost.component';
@@ -19,6 +19,7 @@ import { CardViewComponent } from './components/card-view/card-view.component';
         NgxMdModule.forRoot(),
         AppMaterialModule,
         AppRoutingModule,
+        KeyboardEventsModule,
     ],
     declarations: [
         CardCostComponent,

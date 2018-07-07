@@ -53,7 +53,6 @@ function createWindow() {
 }
 
 function loadGlobalShortcuts() {
-    // Register a 'CommandOrControl+X' shortcut listener.
     const ret = globalShortcut.register('CommandOrControl+Space', () => {
         if (win.isMinimized()) {
             win.restore();
@@ -71,18 +70,17 @@ try {
     app.on('ready', createWindow);
     app.on('ready', loadGlobalShortcuts);
 
-    // Quit when all windows are closed.
-    app.on('window-all-closed', () => {
-        // On OS X it is common for applications and their menu bar
-        // to stay active until the user quits explicitly with Cmd + Q
-        if (process.platform !== 'darwin') {
-            app.quit();
-        }
-    });
+    // pulled this cuz it's supposed to run forevah until closed from the sys tray or
+    // whatever
+    // app.on('window-all-closed', () => {
+    //     // On OS X it is common for applications and their menu bar
+    //     // to stay active until the user quits explicitly with Cmd + Q
+    //     if (process.platform !== 'darwin') {
+    //         app.quit();
+    //     }
+    // });
 
     app.on('activate', () => {
-        // On OS X it's common to re-create a window in the app when the
-        // dock icon is clicked and there are no other windows open.
         if (win === null) {
             createWindow();
         }

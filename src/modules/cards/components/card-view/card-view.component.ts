@@ -1,11 +1,7 @@
 import { Component, HostListener, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Card, CardPrinting } from '../../services/cards.service';
-
-enum KEY_CODE {
-    RIGHT_ARROW = 39,
-    LEFT_ARROW = 37
-}
+import { KeyboardEventsService, KeyCode } from '../../../keyboard-events/keyboard-events.service';
 
 @Component({
     selector: 'nc-card-view',
@@ -17,21 +13,22 @@ export class CardViewComponent implements OnInit {
     _selectedPrinting: CardPrinting;
     private _selectedPrintingIndex = 0;
 
-    constructor(private route: ActivatedRoute) { }
-
-    @HostListener('window:keyup', ['$event'])
-    keyEvent(event: KeyboardEvent) {
-        if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
-            this.setSelectedPrintingIndex(this._selectedPrintingIndex + 1);
-        }
-
-        if (event.keyCode === KEY_CODE.LEFT_ARROW) {
-            this.setSelectedPrintingIndex(this._selectedPrintingIndex - 1);
-        }
-    }
+    constructor(
+        private route: ActivatedRoute,
+        private keyboardEventsService: KeyboardEventsService) { }
 
     ngOnInit() {
         this.setSelectedPrinting(this.card.printings[0]);
+
+        this.keyboardEventsService.onKeyPressed.subscribe(key => {
+            if (key === KeyCode.RightArrow) {
+                this.setSelectedPrintingIndex(this._selectedPrintingIndex + 1);
+            }
+
+            if (key === KeyCode.LeftArrow) {
+                this.setSelectedPrintingIndex(this._selectedPrintingIndex - 1);
+            }
+        });
     }
 
     setSelectedPrinting(printing) {

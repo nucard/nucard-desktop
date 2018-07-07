@@ -1,6 +1,14 @@
+@import '~@angular/material/theming';
+@import 'src/styles/nucard-theme.scss';
+
 .card-result-component {
     mat-list-item {
         cursor: pointer;
+        display: block;
+
+        .hover {
+            background-color: mat-color($nucard-primary);
+        }
     }
     
     h2 {
