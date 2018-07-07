@@ -11,11 +11,13 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Electron
-import { ElectronService } from './providers/electron.service';
 import { WebviewDirective } from './directives/webview.directive';
 
 // app routing
 import { AppRoutingModule } from './app-routing.module';
+
+// app shared
+import { SharedModule } from '../shared/shared.module';
 
 // app modules and components
 import { CardsModule } from '../cards/cards.module';
@@ -38,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         FormsModule,
         HttpClientModule,
         AppRoutingModule,
+        SharedModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -47,7 +50,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         }),
         CardsModule
     ],
-    providers: [ElectronService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

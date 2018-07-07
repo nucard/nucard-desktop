@@ -1,7 +1,7 @@
 <mat-list class="card-result-component">
     <mat-list-item *ngFor="let card of cards" (click)="cardClick(card)">
         <img matListAvatar [src]="card.thumbnail" [alt]="card.name">
-        <h2 matLine [class]="(card === hoveredCard ? 'hover' : '')">{{card.name}}</h2>
+        <h2 matLine [class]="(card === hoveredCard ? 'hovered-card' : '')">{{card.name}}</h2>
         <p class="types" matLine>
             <span *ngFor="let type of card.types">{{type}} </span> |
             <span *ngFor="let subtype of card.subtypes">{{subtype}} </span>

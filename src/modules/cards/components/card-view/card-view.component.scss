@@ -15,18 +15,10 @@
         font-weight: 500;
     }
 
-    .flex-container {
-        display: flex;
-
-        .image-container {
-            margin-right: 2rem;
-        }
-
-        .info-container {
-            flex-grow: 1;
-        }
+    .card-info {
+        margin-bottom: 1rem;
     }
-    
+
     img.card-image {
         border-radius: 12px;
     }
@@ -67,6 +59,28 @@
 
         .flavor-text {
             font-style: italic;
+        }
+    }
+
+    .external-links {
+        display: flex;
+        margin-top: 1rem;
+
+        h3 {
+            margin-left: 16px;
+        }
+    }
+
+    .flex-container {
+        display: flex;
+
+        .image-container, .view-on-container {
+            margin-right: 2rem;
+            min-width: 250px;
+        }
+
+        .info-container, .buy-at-container {
+            flex-grow: 1;
         }
     }
 }

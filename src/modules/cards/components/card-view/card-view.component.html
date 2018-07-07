@@ -1,5 +1,5 @@
 <div class="card-view-component" *ngIf="card">
-    <div class="flex-container">
+    <div class="flex-container card-info">
         <div class="image-container">
             <img class="card-image" [src]="_selectedPrinting.image" [alt]="card.name">
             <ul class="printings-container">
@@ -49,6 +49,20 @@
                     {{_selectedPrinting.flavorText}}
                 </div>
             </div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="flex-container external-links" *ngIf="_selectedPrinting.viewOn.length || _selectedPrinting.buyAt.length">
+        <div class="view-on-container">
+            <h3>View on</h3>
+
+            {{card.viewOn}}
+            <nc-external-info-provider *ngFor="let provider of _selectedPrinting.viewOn" [provider]="provider"></nc-external-info-provider>
+        </div>
+
+        <div class="buy-at-container">
+            <h3>Buy at</h3>
+            <nc-external-info-provider *ngFor="let provider of _selectedPrinting.buyAt" [provider]="provider"></nc-external-info-provider>
         </div>
     </div>
 </div>

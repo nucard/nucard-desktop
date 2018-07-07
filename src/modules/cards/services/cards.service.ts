@@ -18,6 +18,15 @@ export class CardPrinting {
     image: string;
     icon?: string;
     setCode?: string;
+    viewOn?: ExternalInfoProvider[] = [];
+    buyAt?: ExternalInfoProvider[] = [];
+}
+
+export class ExternalInfoProvider {
+    url: string;
+    icon: string;
+    name: string;
+    price?: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -41,9 +50,9 @@ export class CardsService {
                         types: ["Legendary", "Creature"],
                         subtypes: ["Spirit", "Cleric"],
                         thumbnail: "./assets/images/geist.jpg",
-                        text: `Hexproof _(This creature can't be the target of spells or abilities your opponents control)_
+                        text: `Hexproof _(This creature can't be the target of spells or abilities your opponents control.)_
 
-Whenever Geist of Saint Traft attacks, put a 4/4 white Angel creature token with flying on the battlefield tapped and attacking. 
+Whenever Geist of Saint Traft attacks, put a 4/4 white Angel creature token with flying on the battlefield tapped and attacking.
 Exile that token at the end of combat.`,
                         printings: [
                             {
@@ -51,14 +60,38 @@ Exile that token at the end of combat.`,
                                 collectorsNumber: "213",
                                 image: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=247236&type=card',
                                 icon: 'http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=ISD&size=medium&rarity=M',
-                                setCode: 'ISD'
+                                setCode: 'ISD',
+                                viewOn: [
+                                    {
+                                        name: 'Gatherer',
+                                        icon: './assets/images/gatherer.ico',
+                                        url: 'http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=247236',
+                                    },
+                                    {
+                                        name: 'magiccards.info',
+                                        icon: './assets/images/magiccardsinfo.ico',
+                                        url: 'https://magiccards.info/isd/en/213.html',
+                                    }
+                                ]
                             },
                             {
                                 artist: 'Daarken',
                                 collectorsNumber: "1",
                                 image: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=409577&type=card',
                                 icon: 'http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=DDQ&size=medium&rarity=M',
-                                setCode: 'DDQ'
+                                setCode: 'DDQ',
+                                viewOn: [
+                                    {
+                                        name: 'Gatherer',
+                                        icon: './assets/images/gatherer.ico',
+                                        url: 'http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=409577',
+                                    },
+                                    {
+                                        name: 'magiccards.info',
+                                        icon: './assets/images/magiccardsinfo.ico',
+                                        url: 'https://magiccards.info/ddq/en/1.html'
+                                    }
+                                ]
                             }
                         ],
                     },
