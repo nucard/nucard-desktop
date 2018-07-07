@@ -2,6 +2,12 @@
     <div class="flex-container">
         <div class="image-container">
             <img class="card-image" [src]="_selectedPrinting.image" [alt]="card.name">
+            <ul class="printings-container">
+                <li *ngFor="let printing of card.printings" (click)="setSelectedPrinting(printing)">
+                    <div *ngIf="_selectedPrinting.setCode === printing.setCode" class="selected-glow"></div>
+                    <img [src]="printing.icon">
+                </li>
+            </ul>
         </div>
         <div class="info-container">
             <h1>{{card.name}}</h1>

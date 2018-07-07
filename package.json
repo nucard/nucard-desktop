@@ -1,7 +1,7 @@
 {
-  "name": "angular-electron",
-  "version": "4.1.0",
-  "description": "Angular 6 with Electron (Typescript + SASS + Hot Reload)",
+  "name": "nucard-desktop",
+  "version": "0.9.0",
+  "description": "A desktop client for NuCard, the community-powered collectible card game platform.",
   "homepage": "https://nucard.com",
   "author": {
     "name": "Jammerware",

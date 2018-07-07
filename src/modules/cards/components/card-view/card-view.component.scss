@@ -31,6 +31,37 @@
         border-radius: 12px;
     }
 
+    .printings-container {
+        display: flex;
+        width: 100%;
+        margin-top: 0.6rem;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+
+        li {
+            cursor: pointer;
+            margin-right: 3rem;
+            border-radius: 50%;
+            position: relative;
+
+            .selected-glow {
+                background: #eeeeee;
+                border-radius: 50%;
+                height: 12px;
+                width: 12px;
+                box-shadow: 0px 0px 20px 12px #eeeeee;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+            }
+
+            img {
+                position: absolute;
+            }
+        }
+    }
+
     .stat {
         margin-bottom: 1rem;
 

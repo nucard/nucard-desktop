@@ -16,6 +16,8 @@ export class CardPrinting {
     collectorsNumber?: string;
     flavorText?: string;
     image: string;
+    icon?: string;
+    setCode?: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -48,6 +50,15 @@ Exile that token at the end of combat.`,
                                 artist: 'Igor Kieryluk',
                                 collectorsNumber: "213",
                                 image: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=247236&type=card',
+                                icon: 'http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=ISD&size=medium&rarity=M',
+                                setCode: 'ISD'
+                            },
+                            {
+                                artist: 'Daarken',
+                                collectorsNumber: "1",
+                                image: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=409577&type=card',
+                                icon: 'http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=DDQ&size=medium&rarity=M',
+                                setCode: 'DDQ'
                             }
                         ],
                     },
