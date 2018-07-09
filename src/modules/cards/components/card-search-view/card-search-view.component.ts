@@ -1,20 +1,25 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Card, CardsService } from '../../services/cards.service';
+import { SearchBoxDirective } from '../../directives/search-box.directive';
 
 @Component({
     selector: 'nc-card-search-view',
     templateUrl: './card-search-view.component.html',
     styleUrls: ['./card-search-view.component.scss']
 })
-export class CardSearchViewComponent {
+export class CardSearchViewComponent implements AfterViewInit {
     cards: Card[];
     selectedCard: Card;
     query: string;
     isSearching = false;
 
-    @ViewChild('#search-box') searchBox;
+    @ViewChild(SearchBoxDirective) searchBox: SearchBoxDirective;
 
     constructor(private cardsService: CardsService) { }
+
+    ngAfterViewInit() {
+        console.log('searchbox', this.searchBox);
+    }
 
     getSearchPrompt() {
         return `Try "Lightning Bolt"`;
@@ -30,6 +35,7 @@ export class CardSearchViewComponent {
     cardSelected(card: Card) {
         this.cards = null;
         this.selectedCard = card;
+        console.log('this.searchbox', this.searchBox);
         this.searchBox.blur();
     }
 }

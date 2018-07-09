@@ -22,16 +22,14 @@ export class CardResultComponent implements OnInit {
                 return;
             }
 
-            if (!this._hoveredCardIndex) {
-                this._hoveredCardIndex = 0;
-            }
-
             if (key.code === NgxKeyCode.NumPadEnter || key.code === NgxKeyCode.Return) {
                 this.cardClick(this.hoveredCard);
-            } else if (key.code === NgxKeyCode.DownArrow) {
+            }
+            else if (key.code === NgxKeyCode.DownArrow) {
                 this._hoveredCardIndex = this.getIncrementedHoverIndex(this._hoveredCardIndex);
                 this.hoveredCard = this.cards[this._hoveredCardIndex];
-            } else if (key.code === NgxKeyCode.UpArrow) {
+            }
+            else if (key.code === NgxKeyCode.UpArrow) {
                 this._hoveredCardIndex = this.getDecrementedHoverIndex(this._hoveredCardIndex);
                 this.hoveredCard = this.cards[this._hoveredCardIndex];
             }
@@ -47,7 +45,6 @@ export class CardResultComponent implements OnInit {
     }
 
     getIncrementedHoverIndex(currentIndex: number) {
-        console.log('increment', currentIndex);
         if (currentIndex >= this.cards.length - 1) {
             return 0;
         }

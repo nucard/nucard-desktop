@@ -13,6 +13,7 @@ import { CardResultComponent } from './components/card-result/card-result.compon
 import { CardSearchViewComponent } from './components/card-search-view/card-search-view.component';
 import { CardViewComponent } from './components/card-view/card-view.component';
 import { ExternalInfoProviderComponent } from './components/external-info-provider/external-info-provider.component';
+import { SearchBoxDirective } from './directives/search-box.directive';
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import { ExternalInfoProviderComponent } from './components/external-info-provid
         CardSearchViewComponent,
         CardViewComponent,
         ExternalInfoProviderComponent,
+        SearchBoxDirective,
     ],
     providers: [CardsService]
 })

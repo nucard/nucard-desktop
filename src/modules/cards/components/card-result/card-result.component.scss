@@ -4,11 +4,6 @@
 .card-result-component {
     mat-list-item {
         cursor: pointer;
-        display: block;
-
-        .hovered-card {
-            background-color: mat-color($nucard-primary);
-        }
     }
     
     h2 {
