@@ -25,8 +25,13 @@ export class CardSearchViewComponent {
     async onQueryChanged() {
         this.isSearching = true;
         this.selectedCard = null;
-        this.cards = await this.cardsService.search(this.query);
-        this.isSearching = false;
+
+        this.cardsService
+            .search(this.query)
+            .subscribe(cards => {
+                this.cards = cards;
+                this.isSearching = false;
+            });
     }
 
     cardSelected(card: NcCard) {
