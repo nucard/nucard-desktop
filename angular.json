@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "nucard-desktop": {
+    "@nucard/desktop": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -70,21 +70,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "nucard-desktop:build"
+            "browserTarget": "@nucard/desktop:build"
           },
           "configurations": {
             "dev": {
-              "browserTarget": "nucard-desktop:build:dev"
+              "browserTarget": "@nucard/desktop:build:dev"
             },
             "production": {
-              "browserTarget": "nucard-desktop:build:production"
+              "browserTarget": "@nucard/desktop:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nucard-desktop:build"
+            "browserTarget": "@nucard/desktop:build"
           }
         },
         "test": {
@@ -123,7 +123,7 @@
         }
       }
     },
-    "nucard-desktop-e2e": {
+    "@nucard/desktop-e2e": {
       "root": "e2e",
       "projectType": "application",
       "architect": {
@@ -131,7 +131,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "nucard-desktop:serve"
+            "devServerTarget": "@nucard/desktop:serve"
           }
         },
         "lint": {
@@ -148,7 +148,7 @@
       }
     }
   },
-  "defaultProject": "nucard-desktop",
+  "defaultProject": "@nucard/desktop",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "nc",
