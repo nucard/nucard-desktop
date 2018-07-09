@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Card, CardPrinting } from '../../services/cards.service';
+import { NcCard, NcPrinting } from '@nucard/models';
 import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
 
 @Component({
@@ -9,8 +9,8 @@ import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
     styleUrls: ['./card-view.component.scss']
 })
 export class CardViewComponent implements OnInit {
-    @Input() card: Card;
-    _selectedPrinting: CardPrinting;
+    @Input() card: NcCard;
+    _selectedPrinting: NcPrinting;
     private _selectedPrintingIndex = 0;
 
     constructor(

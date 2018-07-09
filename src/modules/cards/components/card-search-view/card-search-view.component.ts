@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { Card, CardsService } from '../../services/cards.service';
+import { NcCard } from '@nucard/models';
+import { CardsService } from '../../services/cards.service';
 import { SearchBoxDirective } from '../../directives/search-box.directive';
 
 @Component({
@@ -8,8 +9,8 @@ import { SearchBoxDirective } from '../../directives/search-box.directive';
     styleUrls: ['./card-search-view.component.scss']
 })
 export class CardSearchViewComponent {
-    cards: Card[];
-    selectedCard: Card;
+    cards: NcCard[];
+    selectedCard: NcCard;
     query: string;
     isSearching = false;
 
@@ -28,7 +29,7 @@ export class CardSearchViewComponent {
         this.isSearching = false;
     }
 
-    cardSelected(card: Card) {
+    cardSelected(card: NcCard) {
         this.cards = null;
         this.selectedCard = card;
         this.searchBox.blur();

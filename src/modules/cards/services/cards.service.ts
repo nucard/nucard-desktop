@@ -1,38 +1,13 @@
 import { Injectable } from '@angular/core';
-
-export class Card {
-    name: string;
-    rarity: string;
-    cost: string[];
-    types: string[];
-    subtypes: string[];
-    thumbnail: string;
-    text?: string;
-    printings?: CardPrinting[];
-}
-
-export class CardPrinting {
-    artist?: string;
-    collectorsNumber?: string;
-    flavorText?: string;
-    image: string;
-    icon?: string;
-    setCode?: string;
-    viewOn?: ExternalInfoProvider[] = [];
-    buyAt?: ExternalInfoProvider[] = [];
-}
-
-export class ExternalInfoProvider {
-    url: string;
-    icon: string;
-    name: string;
-    price?: string;
-}
+import {
+    NcCard,
+    NcPrinting
+} from '@nucard/models';
 
 @Injectable({ providedIn: 'root' })
 export class CardsService {
-    async search(query: string): Promise<Card[]> {
-        return new Promise<Card[]>((resolve, reject) => {
+    async search(query: string): Promise<NcCard[]> {
+        return new Promise<NcCard[]>((resolve, reject) => {
             if (!query || query.length < 2) {
                 resolve([]);
                 return;

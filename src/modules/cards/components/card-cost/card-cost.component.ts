@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Card } from '../../services/cards.service';
+import { NcCard } from '@nucard/models';
 
 @Component({
     selector: 'nc-card-cost',
@@ -7,5 +7,5 @@ import { Card } from '../../services/cards.service';
     styleUrls: ['./card-cost.component.scss']
 })
 export class CardCostComponent {
-    @Input() card: Card;
+    @Input() card: NcCard;
 }

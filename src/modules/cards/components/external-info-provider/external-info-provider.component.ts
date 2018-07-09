@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ExternalInfoProvider } from '../../services/cards.service';
+import { NcExternalInfoProvider } from '@nucard/models';
 import { UrlOpenerService } from '../../../shared/services/url-opener.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { UrlOpenerService } from '../../../shared/services/url-opener.service';
     styleUrls: ['./external-info-provider.component.scss']
 })
 export class ExternalInfoProviderComponent {
-    @Input() provider: ExternalInfoProvider;
+    @Input() provider: NcExternalInfoProvider;
 
     constructor(private urlOpener: UrlOpenerService) { }
 

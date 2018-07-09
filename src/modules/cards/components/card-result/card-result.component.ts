@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Card } from '../../services/cards.service';
+import { NcCard } from '@nucard/models';
 
 @Component({
     selector: 'nc-card-result',
@@ -7,14 +7,11 @@ import { Card } from '../../services/cards.service';
     styleUrls: ['./card-result.component.scss']
 })
 export class CardResultComponent {
-    @Input() cards: Card[];
-    @Output() selectedCardChange = new EventEmitter<Card>();
-    private _selectedCard: Card;
-    private _hoveredCardIndex: number = null;
-    hoveredCard: Card;
+    @Input() cards: NcCard[];
+    @Output() selectedCardChange = new EventEmitter<NcCard>();
+    private _selectedCard: NcCard;
 
-    cardClick(card: Card) {
-        console.log('card click', card);
+    cardClick(card: NcCard) {
         this._selectedCard = card;
         this.selectedCardChange.emit(card);
     }
