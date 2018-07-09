@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NgxKeyboardEventsModule } from 'ngx-keyboard-events';
 import { NgxMdModule } from 'ngx-md';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { AppRoutingModule } from '../app/app-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { KeyboardEventsModule } from '../keyboard-events/keyboard-events.module';
 import { CardsService } from './services/cards.service';
 
 import { CardCostComponent } from './components/card-cost/card-cost.component';
@@ -18,10 +18,10 @@ import { ExternalInfoProviderComponent } from './components/external-info-provid
     imports: [
         CommonModule,
         FormsModule,
-        NgxMdModule.forRoot(),
+        NgxKeyboardEventsModule,
+        NgxMdModule,
         AppMaterialModule,
         AppRoutingModule,
-        KeyboardEventsModule,
         SharedModule,
     ],
     declarations: [

@@ -6,9 +6,9 @@
         cursor: pointer;
         display: block;
 
-        // .hovered-card {
-        //     background-color: mat-color($nucard-primary);
-        // }
+        .hovered-card {
+            background-color: mat-color($nucard-primary);
+        }
     }
     
     h2 {

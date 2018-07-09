@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Card, CardPrinting } from '../../services/cards.service';
-import { KeyboardEventsService, KeyCode } from '../../../keyboard-events/keyboard-events.service';
+import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
 
 @Component({
     selector: 'nc-card-view',
@@ -15,17 +15,17 @@ export class CardViewComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private keyboardEventsService: KeyboardEventsService) { }
+        private keyboardEventsService: NgxKeyboardEventsService) { }
 
     ngOnInit() {
         this.setSelectedPrinting(this.card.printings[0]);
 
         this.keyboardEventsService.onKeyPressed.subscribe(key => {
-            if (key === KeyCode.RightArrow) {
+            if (key.code === NgxKeyCode.RightArrow) {
                 this.setSelectedPrintingIndex(this._selectedPrintingIndex + 1);
             }
 
-            if (key === KeyCode.LeftArrow) {
+            if (key.code === NgxKeyCode.LeftArrow) {
                 this.setSelectedPrintingIndex(this._selectedPrintingIndex - 1);
             }
         });

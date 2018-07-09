@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Card, CardsService } from '../../services/cards.service';
 
 @Component({
-    selector: 'nucard-card-search-view',
+    selector: 'nc-card-search-view',
     templateUrl: './card-search-view.component.html',
     styleUrls: ['./card-search-view.component.scss']
 })
@@ -11,6 +11,8 @@ export class CardSearchViewComponent {
     selectedCard: Card;
     query: string;
     isSearching = false;
+
+    @ViewChild('#search-box') searchBox;
 
     constructor(private cardsService: CardsService) { }
 
@@ -28,5 +30,6 @@ export class CardSearchViewComponent {
     cardSelected(card: Card) {
         this.cards = null;
         this.selectedCard = card;
+        this.searchBox.blur();
     }
 }
