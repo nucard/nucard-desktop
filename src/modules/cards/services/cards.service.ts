@@ -72,6 +72,20 @@ Exile that token at the end of combat.`,
                                         icon: './assets/images/magiccardsinfo.ico',
                                         url: 'https://magiccards.info/isd/en/213.html',
                                     }
+                                ],
+                                buyAt: [
+                                    {
+                                        name: 'Amazon.com',
+                                        icon: './assets/images/amazon.ico',
+                                        url: 'https://www.amazon.com/Magic-Gathering-Geist-Saint-Innistrad/dp/B005N60STO/ref=sr_1_1?s=toys-and-games&ie=UTF8&qid=1531110228&sr=1-1&keywords=geist+of+saint+traft',
+                                        price: '$10.79'
+                                    },
+                                    {
+                                        name: 'tcgplayer.com',
+                                        icon: './assets/images/tcgplayer.ico',
+                                        url: 'https://shop.tcgplayer.com/magic/product/show?ProductName=Geist+of+Saint+Traft&newSearch=false&ProductType=All&IsProductNameExact=true',
+                                        price: '$8.98'
+                                    },
                                 ]
                             },
                             {
@@ -91,6 +105,20 @@ Exile that token at the end of combat.`,
                                         icon: './assets/images/magiccardsinfo.ico',
                                         url: 'https://magiccards.info/ddq/en/1.html'
                                     }
+                                ],
+                                buyAt: [
+                                    {
+                                        name: 'Amazon.com',
+                                        icon: './assets/images/amazon.ico',
+                                        url: 'https://www.amazon.com/Magic-Gathering-Geist-Saint-Innistrad/dp/B005N60STO/ref=sr_1_1?s=toys-and-games&ie=UTF8&qid=1531110228&sr=1-1&keywords=geist+of+saint+traft',
+                                        price: '$11.71'
+                                    },
+                                    {
+                                        name: 'tcgplayer.com',
+                                        icon: './assets/images/tcgplayer.ico',
+                                        url: 'https://shop.tcgplayer.com/magic/product/show?ProductName=Geist+of+Saint+Traft&newSearch=false&ProductType=All&IsProductNameExact=true',
+                                        price: '$5.44'
+                                    },
                                 ]
                             }
                         ],

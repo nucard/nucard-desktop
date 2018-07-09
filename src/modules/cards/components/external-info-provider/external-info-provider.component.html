@@ -1,5 +1,6 @@
 <div class="external-info-provider-component">
     <button mat-button (click)="buttonClick(provider.url)">
         <img [src]="provider.icon" [alt]="provider.name"> {{provider.name}}
+        <span *ngIf="provider.price"> ({{provider.price}})</span>
     </button>
 </div>
