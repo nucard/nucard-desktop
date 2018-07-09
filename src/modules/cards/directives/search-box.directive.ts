@@ -4,7 +4,7 @@ import { Directive, ElementRef } from '@angular/core';
     selector: '[ncSearchBox]'
 })
 export class SearchBoxDirective {
-    constructor(private element: ElementRef) { }
+    constructor(private element: ElementRef<HTMLInputElement>) { }
 
     blur() {
         this.element.nativeElement.blur();
