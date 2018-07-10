@@ -9,4 +9,8 @@ export class SearchBoxDirective {
     blur() {
         this.element.nativeElement.blur();
     }
+
+    focus() {
+        this.element.nativeElement.focus();
+    }
 }

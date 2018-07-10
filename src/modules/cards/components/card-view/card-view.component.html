@@ -4,8 +4,8 @@
             <img class="card-image" [src]="_selectedPrinting.image" [alt]="card.name">
             <ul class="printings-container">
                 <li *ngFor="let printing of card.printings" (click)="setSelectedPrinting(printing)">
-                    <div *ngIf="_selectedPrinting.setCode === printing.setCode" class="selected-glow"></div>
-                    <img [src]="printing.icon">
+                    <div *ngIf="_selectedPrinting.printedIn === printing.printedIn" class="selected-glow"></div>
+                    <img [src]="printing.printingIcon">
                 </li>
             </ul>
         </div>

@@ -1,8 +1,16 @@
-import { app, BrowserWindow, screen, globalShortcut } from 'electron';
+import {
+    app,
+    BrowserWindow,
+    globalShortcut,
+    Menu,
+    screen,
+    Tray
+} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
 let win, serve;
+let systemTrayIcon: Tray;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 
@@ -66,9 +74,38 @@ function loadGlobalShortcuts() {
     }
 }
 
+function createSystemTrayButton() {
+    systemTrayIcon = new Tray('./logo.ico');
+    const contextMenu = Menu.buildFromTemplate([
+        {
+            label: 'Open',
+            click: () => win.restore(),
+        },
+        { label: 'Options', role: 'options' },
+        { type: 'separator' },
+        {
+            label: 'Exit',
+            role: 'exit',
+            click: () => app.quit(),
+        }
+    ]);
+    systemTrayIcon.setToolTip('NuCard');
+    systemTrayIcon.setContextMenu(contextMenu);
+
+    systemTrayIcon.on('click', () => {
+        win.restore();
+    });
+}
+
+function cleanupContextMenu() {
+    systemTrayIcon.destroy();
+}
+
 try {
     app.on('ready', createWindow);
     app.on('ready', loadGlobalShortcuts);
+    app.on('ready', createSystemTrayButton);
+    app.on('before-quit', cleanupContextMenu);
 
     // pulled this cuz it's supposed to run forevah until closed from the sys tray or
     // whatever

@@ -28,8 +28,8 @@ export class CardSearchViewComponent implements OnInit {
             .cardsService
             .getRandomCard()
             .subscribe(card => {
-                console.log('lets go', card.name);
                 this.searchPrompt = `Try "${card.name}"`;
+                this.searchBox.focus();
             });
     }
 
@@ -40,6 +40,9 @@ export class CardSearchViewComponent implements OnInit {
         // change the search prompt if they clear the box
         if (!this.query) {
             this.setSearchPrompt();
+            this.cards = null;
+            this.isSearching = false;
+            return;
         }
 
         this.cardsService
