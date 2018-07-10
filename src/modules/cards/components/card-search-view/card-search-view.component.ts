@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NcCard } from '@nucard/models';
 import { CardsService } from '../../services/cards.service';
 import { SearchBoxDirective } from '../../directives/search-box.directive';
@@ -8,9 +8,10 @@ import { SearchBoxDirective } from '../../directives/search-box.directive';
     templateUrl: './card-search-view.component.html',
     styleUrls: ['./card-search-view.component.scss']
 })
-export class CardSearchViewComponent {
+export class CardSearchViewComponent implements OnInit {
     cards: NcCard[];
     selectedCard: NcCard;
+    searchPrompt = 'Try "Lightning Bolt"';
     query: string;
     isSearching = false;
 
@@ -18,13 +19,28 @@ export class CardSearchViewComponent {
 
     constructor(private cardsService: CardsService) { }
 
-    getSearchPrompt() {
-        return `Try "Lightning Bolt"`;
+    ngOnInit() {
+        this.setSearchPrompt();
+    }
+
+    async setSearchPrompt() {
+        const cardName = this
+            .cardsService
+            .getRandomCard()
+            .subscribe(card => {
+                console.log('lets go', card.name);
+                this.searchPrompt = `Try "${card.name}"`;
+            });
     }
 
     async onQueryChanged() {
         this.isSearching = true;
         this.selectedCard = null;
+
+        // change the search prompt if they clear the box
+        if (!this.query) {
+            this.setSearchPrompt();
+        }
 
         this.cardsService
             .search(this.query)

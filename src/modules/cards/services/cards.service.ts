@@ -9,9 +9,15 @@ export class CardsService {
 
     constructor(private httpClient: HttpClient) { }
 
+    getRandomCard(): Observable<NcCard> {
+        return this
+            .httpClient
+            .get<NcCard>(`${this._apiBaseUrl}/cards/random`);
+    }
+
     search(query: string): Observable<NcCard> {
         return this
             .httpClient
-            .get<NcCard[]>(`${this._apiBaseUrl}/query/${query}`);
+            .get<NcCard[]>(`${this._apiBaseUrl}/cards/query/${query}`);
     }
 }
