@@ -5,7 +5,8 @@ import { NcCard, NcPrinting } from '@nucard/models';
 
 @Injectable({ providedIn: 'root' })
 export class CardsService {
-    private _apiBaseUrl = "http://localhost:3000";
+    // private _apiBaseUrl = "http://localhost:3000";
+    private _apiBaseUrl = "https://nucard-api.herokuapp.com";
 
     constructor(private httpClient: HttpClient) { }
 

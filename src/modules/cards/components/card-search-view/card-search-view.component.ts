@@ -48,8 +48,11 @@ export class CardSearchViewComponent implements OnInit {
         this.cardsService
             .search(this.query)
             .subscribe(cards => {
-                this.cards = cards;
-                this.isSearching = false;
+                // just for debug and dev
+                setTimeout(() => {
+                    this.cards = cards;
+                    this.isSearching = false;
+                }, 1000);
             });
     }
 
