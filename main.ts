@@ -49,8 +49,6 @@ function createWindow() {
         }));
     }
 
-    win.webContents.openDevTools();
-
     // Emitted when the window is closed.
     win.on('closed', () => {
         // Dereference the window object, usually you would store window
@@ -63,14 +61,14 @@ function createWindow() {
 function loadGlobalShortcuts() {
     const ret = globalShortcut.register('CommandOrControl+Space', () => {
         if (win.isMinimized()) {
-            win.restore();
+            restoreSearchWindow();
         } else {
             win.minimize();
         }
     });
 
     if (!ret) {
-        console.log('registration failed');
+        throw new Error('hotkey registration failed');
     }
 }
 
@@ -79,7 +77,7 @@ function createSystemTrayButton() {
     const contextMenu = Menu.buildFromTemplate([
         {
             label: 'Open',
-            click: () => win.restore(),
+            click: () => restoreSearchWindow(),
         },
         { label: 'Options', role: 'options' },
         { type: 'separator' },
@@ -93,7 +91,7 @@ function createSystemTrayButton() {
     systemTrayIcon.setContextMenu(contextMenu);
 
     systemTrayIcon.on('click', () => {
-        win.restore();
+        restoreSearchWindow();
     });
 }
 
@@ -101,27 +99,26 @@ function cleanupContextMenu() {
     systemTrayIcon.destroy();
 }
 
-try {
-    app.on('ready', createWindow);
-    app.on('ready', loadGlobalShortcuts);
-    app.on('ready', createSystemTrayButton);
-    app.on('before-quit', cleanupContextMenu);
-
-    // pulled this cuz it's supposed to run forevah until closed from the sys tray or
-    // whatever
-    // app.on('window-all-closed', () => {
-    //     // On OS X it is common for applications and their menu bar
-    //     // to stay active until the user quits explicitly with Cmd + Q
-    //     if (process.platform !== 'darwin') {
-    //         app.quit();
-    //     }
-    // });
-
-    app.on('activate', () => {
-        if (win === null) {
-            createWindow();
-        }
-    });
-} catch (e) {
-    throw e;
+function restoreSearchWindow() {
+    if (win === null) {
+        createWindow();
+    } else {
+        win.restore();
+    }
 }
+
+app.on('ready', createWindow);
+app.on('ready', loadGlobalShortcuts);
+app.on('ready', createSystemTrayButton);
+app.on('before-quit', cleanupContextMenu);
+
+app.on('window-all-closed', () => {
+    // noop - by default automatically quits when all windows are closed,
+    // but we want to stay up until they quit from systray
+});
+
+app.on('activate', () => {
+    if (win === null) {
+        createWindow();
+    }
+});

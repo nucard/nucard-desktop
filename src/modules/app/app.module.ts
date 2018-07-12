@@ -17,12 +17,14 @@ import { WebviewDirective } from './directives/webview.directive';
 import { AppRoutingModule } from './app-routing.module';
 
 // app shared
+import { AppMaterialModule } from '../app-material/app-material.module';
 import { SharedModule } from '../shared/shared.module';
 
 // app modules and components
 import { CardsModule } from '../cards/cards.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
+import { AppMenuComponent } from './components/app-menu/app-menu.component';
+import { OptionsModule } from '../options/options.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -32,13 +34,14 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent,
+        AppMenuComponent,
         WebviewDirective
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
+        AppMaterialModule,
         AppRoutingModule,
         SharedModule,
         TranslateModule.forRoot({
@@ -48,7 +51,8 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-        CardsModule
+        CardsModule,
+        OptionsModule,
     ],
     bootstrap: [AppComponent]
 })

@@ -75,12 +75,12 @@ ngx-md {
 
 /* GENERAL STYLES */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 2px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #303030; /* TODO theme color */
+    background: transparent; /* TODO theme color */
 }
  
 /* Handle */

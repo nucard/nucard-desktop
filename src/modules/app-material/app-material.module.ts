@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     MatButtonModule,
     MatDividerModule,
+    MatIconModule,
     MatInputModule,
     MatListModule,
     MatProgressSpinnerModule,
@@ -16,6 +17,7 @@ import {
         CommonModule,
         MatButtonModule,
         MatDividerModule,
+        MatIconModule,
         MatInputModule,
         MatListModule,
         MatProgressSpinnerModule
@@ -25,6 +27,7 @@ import {
         BrowserAnimationsModule,
         MatButtonModule,
         MatDividerModule,
+        MatIconModule,
         MatInputModule,
         MatListModule,
         MatProgressSpinnerModule
