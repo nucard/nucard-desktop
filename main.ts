@@ -9,7 +9,7 @@ import {
 import * as path from 'path';
 import * as url from 'url';
 
-let win, serve;
+let mainWindow, serve;
 let systemTrayIcon: Tray;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
@@ -24,7 +24,7 @@ function createWindow() {
     const appWindowY = (size.height / 2) - (appWindowHeight / 2);
 
     // Create the browser window.
-    win = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         //        frame: false,
         x: appWindowX,
         y: appWindowY,
@@ -36,40 +36,19 @@ function createWindow() {
         useContentSize: true,
     });
 
-    if (serve) {
-        require('electron-reload')(__dirname, {
-            electron: require(`${__dirname}/node_modules/electron`)
-        });
-        win.loadURL('http://localhost:4200');
-    } else {
-        win.loadURL(url.format({
-            pathname: path.join(__dirname, 'dist/index.html'),
-            protocol: 'file:',
-            slashes: true
-        }));
-    }
+    serveApp();
 
     // Emitted when the window is closed.
-    win.on('closed', () => {
+    mainWindow.on('closed', () => {
         // Dereference the window object, usually you would store window
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
-        win = null;
+        mainWindow = null;
     });
 }
 
-function loadGlobalShortcuts() {
-    const ret = globalShortcut.register('CommandOrControl+Space', () => {
-        if (win.isMinimized()) {
-            restoreSearchWindow();
-        } else {
-            win.minimize();
-        }
-    });
-
-    if (!ret) {
-        throw new Error('hotkey registration failed');
-    }
+function cleanupContextMenu() {
+    systemTrayIcon.destroy();
 }
 
 function createSystemTrayButton() {
@@ -79,7 +58,13 @@ function createSystemTrayButton() {
             label: 'Open',
             click: () => restoreSearchWindow(),
         },
-        { label: 'Options', role: 'options' },
+        {
+            label: 'Options',
+            click: () => {
+                restoreSearchWindow();
+                mainWindow.webContents.send('navToOptions');
+            }
+        },
         { type: 'separator' },
         {
             label: 'Exit',
@@ -95,30 +80,50 @@ function createSystemTrayButton() {
     });
 }
 
-function cleanupContextMenu() {
-    systemTrayIcon.destroy();
+function loadGlobalShortcuts() {
+    const ret = globalShortcut.register('CommandOrControl+Space', () => {
+        if (mainWindow.isMinimized()) {
+            restoreSearchWindow();
+        } else {
+            mainWindow.minimize();
+        }
+    });
+
+    if (!ret) {
+        throw new Error('hotkey registration failed');
+    }
 }
 
 function restoreSearchWindow() {
-    if (win === null) {
+    if (mainWindow === null) {
         createWindow();
     } else {
-        win.restore();
+        mainWindow.restore();
+    }
+}
+
+function serveApp() {
+    if (serve) {
+        require('electron-reload')(__dirname, {
+            electron: require(`${__dirname}/node_modules/electron`)
+        });
+        mainWindow.loadURL(`http://localhost:4200`);
+    } else {
+        mainWindow.loadURL(url.format({
+            pathname: path.join(__dirname, `dist/index.html`),
+            protocol: 'file:',
+            slashes: true
+        }));
     }
 }
 
 app.on('ready', createWindow);
 app.on('ready', loadGlobalShortcuts);
 app.on('ready', createSystemTrayButton);
-app.on('before-quit', cleanupContextMenu);
+app.on('activate', () => restoreSearchWindow());
 
+app.on('before-quit', cleanupContextMenu);
 app.on('window-all-closed', () => {
     // noop - by default automatically quits when all windows are closed,
     // but we want to stay up until they quit from systray
-});
-
-app.on('activate', () => {
-    if (win === null) {
-        createWindow();
-    }
 });
