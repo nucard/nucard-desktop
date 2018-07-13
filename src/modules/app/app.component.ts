@@ -17,17 +17,13 @@ export class AppComponent {
         translate.setDefaultLang('en');
 
         if (electronService.isElectron()) {
-            console.log('Mode electron');
-            console.log('Electron ipcRenderer', electronService.ipcRenderer);
-            console.log('NodeJS childProcess', electronService.childProcess);
-
-            electronService.ipcRenderer.on('navToOptions', (event, message) => {
-                console.log('event', event);
-                console.log('router', this.router);
-                this.router.navigateByUrl('/options');
+            electronService.ipcRenderer.on('navToAbout', (event, message) => {
+                this.router.navigateByUrl('/about');
             });
-        } else {
-            console.log('Mode web');
+
+            electronService.ipcRenderer.on('navToPreferences', (event, message) => {
+                this.router.navigateByUrl('/preferences');
+            });
         }
     }
 }

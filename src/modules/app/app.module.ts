@@ -21,6 +21,7 @@ import { AppMaterialModule } from '../app-material/app-material.module';
 import { SharedModule } from '../shared/shared.module';
 
 // app modules and components
+import { AboutModule } from '../about/about.module';
 import { CardsModule } from '../cards/cards.module';
 import { AppComponent } from './app.component';
 import { AppMenuComponent } from './components/app-menu/app-menu.component';
@@ -51,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
+        AboutModule,
         CardsModule,
         OptionsModule,
     ],

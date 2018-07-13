@@ -25,11 +25,12 @@ function createWindow() {
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        //        frame: false,
+        // frame: false,
         x: appWindowX,
         y: appWindowY,
         width: appWindowWidth,
         height: appWindowHeight,
+        icon: './logo.ico',
         fullscreenable: false,
         maximizable: false,
         transparent: true,
@@ -59,10 +60,17 @@ function createSystemTrayButton() {
             click: () => restoreSearchWindow(),
         },
         {
-            label: 'Options',
+            label: 'Preferences',
             click: () => {
                 restoreSearchWindow();
-                mainWindow.webContents.send('navToOptions');
+                mainWindow.webContents.send('navToPreferences');
+            }
+        },
+        {
+            label: 'About',
+            click: () => {
+                restoreSearchWindow();
+                mainWindow.webContents.send('navToAbout');
             }
         },
         { type: 'separator' },

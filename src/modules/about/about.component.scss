@@ -1,0 +1,27 @@
+@import '~@angular/material/theming';
+@import 'src/styles/nucard-theme.scss';
+
+.tab-content {
+    padding: 1rem;
+}
+
+table {
+    width: 100%;
+
+    tr {
+        border-bottom: solid 1px  mat-color($nucard-primary, 100);
+    }
+
+    td {
+        vertical-align: middle;
+        padding: 1rem;
+    }
+    
+    td.label {
+        width: 35vw;
+    }
+    
+    img.library-icon {
+        height: 50px;
+    }
+}
