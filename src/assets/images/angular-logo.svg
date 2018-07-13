@@ -7,13 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="120"
-   height="60"
-   viewBox="0 0 120 60"
+   width="110"
+   height="29.777344"
+   viewBox="0 0 110 29.777344"
    version="1.1"
    id="svg3135"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="angular-ar21.svg">
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="angular-logo.svg">
   <metadata
      id="metadata3167">
     <rdf:RDF>
@@ -35,23 +35,27 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1284"
-     inkscape:window-height="843"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
      id="namedview3165"
      showgrid="false"
      inkscape:zoom="9.5916667"
-     inkscape:cx="60"
-     inkscape:cy="30"
-     inkscape:window-x="75"
-     inkscape:window-y="34"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg3135" />
+     inkscape:cx="55"
+     inkscape:cy="14.061685"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3135"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <defs
      id="defs3137" />
   <g
      id="g3139"
      style="fill:none;stroke:none"
-     transform="matrix(0.21484375,0,0,0.21484375,5,15.222656)">
+     transform="scale(0.21484375,0.21484375)">
     <g
        id="g3141">
       <g
@@ -86,7 +90,7 @@
       <g
          id="g3157">
         <path
-           d="M 0,23 64.5,0 130.7,22.6 120,107.9 64.5,138.6 9.9,108.3 0,23 0,23 z"
+           d="M 0,23 64.5,0 130.7,22.6 120,107.9 64.5,138.6 9.9,108.3 0,23 0,23 Z"
            id="path3159"
            inkscape:connector-curvature="0"
            style="fill:#e23237" />
