@@ -35,7 +35,7 @@ export class CardViewComponent implements OnInit {
         this._selectedPrinting = printing;
 
         for (let i = 0; i < this.card.printings.length; i++) {
-            if (this.card.printings[i].setCode === printing.setCode) {
+            if (this.card.printings[i].printedIn === printing.printedIn) {
                 this._selectedPrintingIndex = i;
             }
         }
