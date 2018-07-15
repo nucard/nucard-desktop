@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgxKeyboardEventsModule } from 'ngx-keyboard-events';
-import { NgxMdModule } from 'ngx-md';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { AppRoutingModule } from '../app/app-routing.module';
 import { RulesSymbolsModule } from '../rules-symbols/rules-symbols.module';
@@ -21,7 +20,6 @@ import { SearchBoxDirective } from './directives/search-box.directive';
         CommonModule,
         FormsModule,
         NgxKeyboardEventsModule,
-        NgxMdModule,
         AppMaterialModule,
         AppRoutingModule,
         RulesSymbolsModule,

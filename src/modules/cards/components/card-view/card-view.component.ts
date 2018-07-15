@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NcCard, NcPrinting, NcRulesSymbol } from '@nucard/models';
+import { NcCard, NcPrinting, NcRulesSymbol } from '@nucard/models/dist';
 import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
 import { CardsService } from '../../services/cards.service';
 

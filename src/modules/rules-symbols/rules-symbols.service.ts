@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NcRulesSymbol } from '@nucard/models';
+import { NcRulesSymbol } from '@nucard/models/dist';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +13,10 @@ export class RulesSymbolsService {
         let result = input;
 
         for (const ruleSymbol of ruleSymbols) {
-            result = result.replace(ruleSymbol.symbol, ` ![cost](${ruleSymbol.image})`);
+            // can't use regexes directly here because of potentially unescaped characters in rules symbols
+            while (result.indexOf(ruleSymbol.symbol) >= 0) {
+                result = result.replace(ruleSymbol.symbol, ` ![rules symbol](${ruleSymbol.image})`);
+            }
         }
 
         return result;

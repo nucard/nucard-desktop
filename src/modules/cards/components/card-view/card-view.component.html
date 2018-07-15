@@ -15,7 +15,7 @@
                 <span *ngIf="card.rarity">
                     <strong>{{card.rarity}} </strong>
                 </span>
-                <span *ngFor="let type of card.types">{{type}} </span>
+                <span>{{card.types.join(', ')}} </span>
             </h2>
 
             <div>
@@ -37,7 +37,7 @@
 
                 <div class="stat">
                     <div class="mat-caption">Text</div>
-                    <div Markdown [ncRulesSymbols]="rulesSymbols" class="mat-input">{{card.text}}</div>
+                    <div class="mat-input" [innerHTML]="card.text | rulesSymbols: rulesSymbols | markdown "></div>
                 </div>
 
                 <div class="stat" *ngIf="_selectedPrinting.artist">

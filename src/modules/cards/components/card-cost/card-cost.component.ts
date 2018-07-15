@@ -10,19 +10,13 @@ import { RulesSymbolsService } from '../../../rules-symbols/rules-symbols.servic
 })
 export class CardCostComponent implements OnInit {
     @Input() card: NcCard;
-    public resolvedCosts: NcRulesSymbol[] = [];
-    public costString: string;
+    public rulesSymbols: NcRulesSymbol[] = [];
 
     constructor(
         private cardsService: CardsService,
         private rulesSymbolService: RulesSymbolsService) { }
 
-    ngOnInit() {
-        this
-            .cardsService
-            .getRulesSymbols()
-            .subscribe(symbols => {
-                this.costString = this.rulesSymbolService.renderSymbols(this.card.cost, symbols);
-            });
+    async ngOnInit() {
+        this.rulesSymbols = await this.cardsService.getRulesSymbols().toPromise();
     }
 }
