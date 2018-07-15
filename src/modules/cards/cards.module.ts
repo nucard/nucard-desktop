@@ -5,6 +5,7 @@ import { NgxKeyboardEventsModule } from 'ngx-keyboard-events';
 import { NgxMdModule } from 'ngx-md';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { AppRoutingModule } from '../app/app-routing.module';
+import { RulesSymbolsModule } from '../rules-symbols/rules-symbols.module';
 import { SharedModule } from '../shared/shared.module';
 import { CardsService } from './services/cards.service';
 
@@ -14,7 +15,6 @@ import { CardSearchViewComponent } from './components/card-search-view/card-sear
 import { CardViewComponent } from './components/card-view/card-view.component';
 import { ExternalInfoProviderComponent } from './components/external-info-provider/external-info-provider.component';
 import { SearchBoxDirective } from './directives/search-box.directive';
-import { SymbolsService } from './services/symbols.service';
 
 @NgModule({
     imports: [
@@ -24,6 +24,7 @@ import { SymbolsService } from './services/symbols.service';
         NgxMdModule,
         AppMaterialModule,
         AppRoutingModule,
+        RulesSymbolsModule,
         SharedModule,
     ],
     declarations: [
@@ -34,9 +35,6 @@ import { SymbolsService } from './services/symbols.service';
         ExternalInfoProviderComponent,
         SearchBoxDirective,
     ],
-    providers: [
-        CardsService,
-        SymbolsService,
-    ]
+    providers: [CardsService]
 })
 export class CardsModule { }

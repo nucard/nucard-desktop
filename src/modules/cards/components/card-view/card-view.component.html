@@ -37,7 +37,7 @@
 
                 <div class="stat">
                     <div class="mat-caption">Text</div>
-                    <ngx-md class="mat-input" [data]="card.text"></ngx-md>
+                    <div Markdown [ncRulesSymbols]="rulesSymbols" class="mat-input">{{card.text}}</div>
                 </div>
 
                 <div class="stat" *ngIf="_selectedPrinting.artist">

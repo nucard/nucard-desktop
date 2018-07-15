@@ -1,7 +1,7 @@
-import { Component, HostListener, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NcCard, NcPrinting } from '@nucard/models/dist';
+import { Component, OnInit, Input } from '@angular/core';
+import { NcCard, NcPrinting, NcRulesSymbol } from '@nucard/models';
 import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
+import { CardsService } from '../../services/cards.service';
 
 @Component({
     selector: 'nc-card-view',
@@ -11,14 +11,23 @@ import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
 export class CardViewComponent implements OnInit {
     @Input() card: NcCard;
     _selectedPrinting: NcPrinting;
+    public rulesSymbols: NcRulesSymbol[];
     private _selectedPrintingIndex = 0;
 
     constructor(
-        private route: ActivatedRoute,
+        private cardsService: CardsService,
         private keyboardEventsService: NgxKeyboardEventsService) { }
 
-    ngOnInit() {
+    async ngOnInit() {
         this.setSelectedPrinting(this.card.printings[0]);
+        this
+            .cardsService
+            .getRulesSymbols()
+            .subscribe(symbols => this.rulesSymbols = symbols);
+
+        if (this.card.printings.length <= 1) {
+            return;
+        }
 
         this.keyboardEventsService.onKeyPressed.subscribe(key => {
             if (key.code === NgxKeyCode.RightArrow) {
