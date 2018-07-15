@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NcCard } from '@nucard/models';
+import { NcCard } from '@nucard/models/dist';
 import { CardsService } from '../../services/cards.service';
 import { SearchBoxDirective } from '../../directives/search-box.directive';
 

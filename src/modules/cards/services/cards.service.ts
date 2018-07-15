@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { NcCard, NcPrinting, NcRulesSymbol } from '@nucard/models';
+import { NcCard, NcPrinting, NcRulesSymbol } from '@nucard/models/dist';
 
 @Injectable({ providedIn: 'root' })
 export class CardsService {

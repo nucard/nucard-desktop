@@ -1,0 +1,10 @@
+.card-cost-component {
+    width: 100%;
+
+    ::ng-deep img {
+        max-height: 16px;
+        position: relative;
+        top: 3px;
+        vertical-align: center;
+    }
+}

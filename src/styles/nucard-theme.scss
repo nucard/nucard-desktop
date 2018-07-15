@@ -9,14 +9,14 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$nucard-primary: mat-palette($mat-orange);
-$nucard-accent:  mat-palette($mat-blue-grey);
+$nucard-primary: mat-palette($mat-blue);
+$nucard-accent:  mat-palette($mat-orange);
 
 // The warn palette is optional (defaults to red).
 // $nucard-warn:    mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$nucard-theme: mat-dark-theme($nucard-primary, $nucard-accent);
+$nucard-theme: mat-light-theme($nucard-primary, $nucard-accent);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

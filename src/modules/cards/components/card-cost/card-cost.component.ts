@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NcCard, NcRulesSymbol } from '@nucard/models';
+import { NcCard, NcRulesSymbol } from '@nucard/models/dist';
 import { CardsService } from '../../services/cards.service';
+import { RulesSymbolsService } from '../../../rules-symbols/rules-symbols.service';
 
 @Component({
     selector: 'nc-card-cost',
@@ -10,30 +11,18 @@ import { CardsService } from '../../services/cards.service';
 export class CardCostComponent implements OnInit {
     @Input() card: NcCard;
     public resolvedCosts: NcRulesSymbol[] = [];
+    public costString: string;
 
-    constructor(private cardsService: CardsService) { }
+    constructor(
+        private cardsService: CardsService,
+        private rulesSymbolService: RulesSymbolsService) { }
 
     ngOnInit() {
         this
             .cardsService
             .getRulesSymbols()
             .subscribe(symbols => {
-                this.resolveCostSymbols(symbols);
+                this.costString = this.rulesSymbolService.renderSymbols(this.card.cost, symbols);
             });
-    }
-
-    private resolveCostSymbols(symbols: NcRulesSymbol[]) {
-        if (!this.card.cost) {
-            return [];
-        }
-
-        const symbolStrings = this.card.cost.match(/\{[^\}]\}/);
-        const retVal = [];
-
-        for (const symbol of symbolStrings) {
-            retVal.push(symbols.find(s => `{${s.symbol}}` === `${symbol}`);
-        }
-
-        this.resolvedCosts = retVal;
     }
 }

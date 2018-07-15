@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { NcCard } from '@nucard/models';
+import { NcCard } from '@nucard/models/dist';
 
 @Component({
     selector: 'nc-card-result',
@@ -14,5 +14,9 @@ export class CardResultComponent {
     cardClick(card: NcCard) {
         this._selectedCard = card;
         this.selectedCardChange.emit(card);
+    }
+
+    getCardThumbnail(card: NcCard) {
+        return card.thumbnail ? `url(${card.thumbnail})` : `url(${card.printings[0].image})`;
     }
 }

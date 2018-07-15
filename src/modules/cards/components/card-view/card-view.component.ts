@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NcCard, NcPrinting } from '@nucard/models';
+import { NcCard, NcPrinting } from '@nucard/models/dist';
 import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
 
 @Component({

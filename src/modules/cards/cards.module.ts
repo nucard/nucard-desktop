@@ -14,6 +14,7 @@ import { CardSearchViewComponent } from './components/card-search-view/card-sear
 import { CardViewComponent } from './components/card-view/card-view.component';
 import { ExternalInfoProviderComponent } from './components/external-info-provider/external-info-provider.component';
 import { SearchBoxDirective } from './directives/search-box.directive';
+import { SymbolsService } from './services/symbols.service';
 
 @NgModule({
     imports: [
@@ -33,6 +34,9 @@ import { SearchBoxDirective } from './directives/search-box.directive';
         ExternalInfoProviderComponent,
         SearchBoxDirective,
     ],
-    providers: [CardsService]
+    providers: [
+        CardsService,
+        SymbolsService,
+    ]
 })
 export class CardsModule { }
