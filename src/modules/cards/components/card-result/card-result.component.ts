@@ -17,6 +17,10 @@ export class CardResultComponent {
     }
 
     getCardThumbnail(card: NcCard) {
+        if (!card.thumbnail && !card.printings[0].image) {
+            return null;
+        }
+
         return card.thumbnail ? `url(${card.thumbnail})` : `url(${card.printings[0].image})`;
     }
 }

@@ -1,11 +1,11 @@
 <div class="card-view-component" *ngIf="card">
     <div class="flex-container card-info">
         <div class="image-container">
-            <img class="card-image" [src]="_selectedPrinting.image" [alt]="card.name">
-            <ul class="printings-container">
+            <img class="card-image" *ngIf="_selectedPrinting.image" [src]="_selectedPrinting.image" [alt]="card.name">
+            <ul *ngIf="card.printings.length > 1" class="printings-container">
                 <li *ngFor="let printing of card.printings" (click)="setSelectedPrinting(printing)">
                     <div *ngIf="_selectedPrinting.printedIn === printing.printedIn" class="selected-glow"></div>
-                    <img [src]="printing.printingIcon">
+                    <img *ngIf="_selectedPrinting.printingIcon" [src]="printing.printingIcon">
                 </li>
             </ul>
         </div>
@@ -15,23 +15,20 @@
                 <span *ngIf="card.rarity">
                     <strong>{{card.rarity}} </strong>
                 </span>
-                <span>{{card.types.join(', ')}} </span>
+                <span>{{card.types.join(' ')}} </span>
+                <span *ngIf="card.subtypes && card.subtypes.length">: {{card.subtypes.join(' • ')}}</span>
             </h2>
 
             <div>
-                <div class="stat">
+                <div *ngIf="card.faction" class="stat">
+                    <div class="mat-caption">Faction</div>
+                    <div class="mat-input">{{card.faction | titlecase}}</div>
+                </div>
+
+                <div *ngIf="card.cost" class="stat">
                     <div class="mat-caption">Cost</div>
                     <div class="mat-input">
                         <nc-rules-text [text]="card.cost"></nc-rules-text>
-                    </div>
-                </div>
-
-                <div class="stat">
-                    <div class="mat-caption">Type</div>
-                    <div class="mat-input">
-                        <span *ngFor="let type of card.types">{{type}} </span>
-                        <span *ngIf="card.subtypes && card.subtypes.length"> | </span>
-                        <span *ngFor="let type of card.subtypes">{{type}} </span>
                     </div>
                 </div>
 
@@ -47,6 +44,11 @@
 
                 <div class="stat flavor-text" *ngIf="_selectedPrinting.flavorText">
                     {{_selectedPrinting.flavorText}}
+                </div>
+
+                <div *ngIf="_selectedPrinting.printedIn" class="stat">
+                    <div class="mat-caption">Printed in</div>
+                    <div class="mat-input">{{_selectedPrinting.printedIn}}</div>
                 </div>
             </div>
         </div>
