@@ -8,7 +8,7 @@
             <span *ngFor="let subtype of card.subtypes">{{subtype}} </span>
         </p>
         <div class="costs" matLine>
-            <nc-card-cost [card]="card"></nc-card-cost>
+            <nc-rules-text [text]="card.cost"></nc-rules-text>
         </div>
         <mat-divider></mat-divider>
     </mat-list-item>

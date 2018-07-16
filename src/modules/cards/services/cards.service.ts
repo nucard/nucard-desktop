@@ -16,19 +16,19 @@ export class CardsService {
             .get<NcCard>(`${this._apiBaseUrl}/cards/random`);
     }
 
-    getRulesSymbols(): Subject<NcRulesSymbol[]> {
+    getRulesSymbols(): Observable<NcRulesSymbol[]> {
         if (this._cachedRulesSymbols) {
             return of(this._cachedRulesSymbols);
         }
 
         // just a trick to both return the observable and listen to it so we can cache
-        const subject = new Subject<NcRulesSymbol>();
+        const subject = new Subject<NcRulesSymbol[]>();
         const retVal = this
             .httpClient
             .get<NcRulesSymbol[]>(`${this._apiBaseUrl}/rules-symbols`)
-            .map(symbols => {
+            .subscribe(symbols => {
                 this._cachedRulesSymbols = symbols;
-                subject.emit(symbols);
+                subject.next(symbols);
                 subject.complete();
             });
 

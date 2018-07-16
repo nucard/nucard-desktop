@@ -22,7 +22,7 @@
                 <div class="stat">
                     <div class="mat-caption">Cost</div>
                     <div class="mat-input">
-                        <nc-card-cost [card]="card"></nc-card-cost>
+                        <nc-rules-text [text]="card.cost"></nc-rules-text>
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
 
                 <div class="stat">
                     <div class="mat-caption">Text</div>
-                    <div class="mat-input" [innerHTML]="card.text | rulesSymbols: rulesSymbols | markdown "></div>
+                    <nc-rules-text [text]="card.text"></nc-rules-text>
                 </div>
 
                 <div class="stat" *ngIf="_selectedPrinting.artist">
@@ -55,8 +55,6 @@
     <div class="flex-container external-links" *ngIf="_selectedPrinting.viewOn || _selectedPrinting.buyAt">
         <div class="view-on-container">
             <h3>View on</h3>
-
-            {{card.viewOn}}
             <nc-external-info-provider *ngFor="let provider of _selectedPrinting.viewOn" [provider]="provider"></nc-external-info-provider>
         </div>
 

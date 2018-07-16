@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NcCard, NcPrinting, NcRulesSymbol } from '@nucard/models/dist';
 import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
-import { CardsService } from '../../services/cards.service';
 
 @Component({
     selector: 'nc-card-view',
@@ -11,19 +10,12 @@ import { CardsService } from '../../services/cards.service';
 export class CardViewComponent implements OnInit {
     @Input() card: NcCard;
     _selectedPrinting: NcPrinting;
-    public rulesSymbols: NcRulesSymbol[];
     private _selectedPrintingIndex = 0;
 
-    constructor(
-        private cardsService: CardsService,
-        private keyboardEventsService: NgxKeyboardEventsService) { }
+    constructor(private keyboardEventsService: NgxKeyboardEventsService) { }
 
     async ngOnInit() {
         this.setSelectedPrinting(this.card.printings[0]);
-        this
-            .cardsService
-            .getRulesSymbols()
-            .subscribe(symbols => this.rulesSymbols = symbols);
 
         if (this.card.printings.length <= 1) {
             return;

@@ -38,7 +38,7 @@ function createWindow() {
     });
 
     serveApp();
-    mainWindow.webContents.showDevTools();
+    mainWindow.webContents.toggleDevTools();
 
     // Emitted when the window is closed.
     mainWindow.on('closed', () => {

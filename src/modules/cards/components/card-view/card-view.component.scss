@@ -1,3 +1,6 @@
+@import '~@angular/material/theming';
+@import 'src/styles/nucard-theme.scss';
+
 .card-view-component {
     display: flex;
     flex-direction: column;
@@ -43,7 +46,7 @@
                 border-radius: 50%;
                 height: 12px;
                 width: 12px;
-                box-shadow: 0px 0px 20px 12px #eeeeee;
+                box-shadow: 0px 0px 20px 12px mat-color($nucard-primary);
                 position: absolute;
                 left: 8px;
                 top: 8px;

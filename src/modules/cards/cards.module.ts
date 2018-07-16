@@ -8,7 +8,6 @@ import { RulesSymbolsModule } from '../rules-symbols/rules-symbols.module';
 import { SharedModule } from '../shared/shared.module';
 import { CardsService } from './services/cards.service';
 
-import { CardCostComponent } from './components/card-cost/card-cost.component';
 import { CardResultComponent } from './components/card-result/card-result.component';
 import { CardSearchViewComponent } from './components/card-search-view/card-search-view.component';
 import { CardViewComponent } from './components/card-view/card-view.component';
@@ -26,7 +25,6 @@ import { SearchBoxDirective } from './directives/search-box.directive';
         SharedModule,
     ],
     declarations: [
-        CardCostComponent,
         CardResultComponent,
         CardSearchViewComponent,
         CardViewComponent,
