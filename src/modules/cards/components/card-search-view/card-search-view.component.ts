@@ -9,6 +9,9 @@ import { SearchBoxDirective } from '../../directives/search-box.directive';
     styleUrls: ['./card-search-view.component.scss']
 })
 export class CardSearchViewComponent implements OnInit {
+    private _activeSearchDebounce: NodeJS.Timer;
+    private _searchDebounceLengthMs = 300;
+
     cards: NcCard[];
     selectedCard: NcCard;
     searchPrompt = 'Try "Lightning Bolt"';
@@ -34,8 +37,7 @@ export class CardSearchViewComponent implements OnInit {
     }
 
     async onQueryChanged() {
-        this.isSearching = true;
-        this.selectedCard = null;
+        clearTimeout(this._activeSearchDebounce);
 
         // change the search prompt if they clear the box
         if (!this.query) {
@@ -45,15 +47,17 @@ export class CardSearchViewComponent implements OnInit {
             return;
         }
 
-        this.cardsService
-            .search(this.query)
-            .subscribe(cards => {
-                // just for debug and dev
-                setTimeout(() => {
+        this.isSearching = true;
+        this.selectedCard = null;
+
+        this._activeSearchDebounce = setTimeout(() => {
+            this.cardsService
+                .search(this.query)
+                .subscribe(cards => {
                     this.cards = cards;
                     this.isSearching = false;
-                }, 1000);
-            });
+                });
+        }, this._searchDebounceLengthMs);
     }
 
     cardSelected(card: NcCard) {

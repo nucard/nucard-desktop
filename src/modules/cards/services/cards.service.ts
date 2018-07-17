@@ -42,6 +42,7 @@ export class CardsService {
     }
 
     search(query: string): Observable<NcCard[]> {
+        console.log('searching', query);
         return this
             .httpClient
             .get<NcCard[]>(`${this._apiBaseUrl}/cards/search/${query}`);

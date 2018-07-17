@@ -10,4 +10,11 @@
     strong {
         font-weight: 500;
     }
+
+    br {
+        display: block;
+        margin-bottom: 0.5rem;
+        content: " ";
+        line-height: 1rem;
+    }
 }

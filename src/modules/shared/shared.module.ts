@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { MarkdownModule } from 'ngx-markdown';
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 
 import { ClickOnEnterDirective } from './directives/click-on-enter.directive';
 import { UrlOpenerService } from './services/url-opener.service';
@@ -11,7 +11,15 @@ import { ElectronService } from './services/electron.service';
     imports: [
         CommonModule,
         HttpClientModule,
-        MarkdownModule.forRoot({ loader: HttpClient }),
+        MarkdownModule.forRoot({
+            loader: HttpClient,
+            markedOptions: {
+                provide: MarkedOptions,
+                useValue: {
+                    breaks: true
+                }
+            }
+        }),
     ],
     declarations: [ClickOnEnterDirective],
     exports: [
