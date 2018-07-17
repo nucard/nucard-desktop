@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {
     NcCard,
+    NcFaction,
     NcPrinting,
     NcRulesSymbol,
     NcExternalInfoProvider
 } from '@nucard/models/dist';
 import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
+import { mergeMap } from 'rxjs/operators';
 import { CardsService } from '../../services/cards.service';
 
 @Component({
@@ -18,6 +20,7 @@ export class CardViewComponent implements OnInit {
     buyAt: NcExternalInfoProvider[] = [];
     viewOn: NcExternalInfoProvider[] = [];
     _selectedPrinting: NcPrinting;
+    faction: NcFaction;
     private _selectedPrintingIndex = 0;
 
     constructor(
@@ -66,6 +69,15 @@ export class CardViewComponent implements OnInit {
             .subscribe(providers => {
                 this.buyAt = providers.filter(p => p.price);
                 this.viewOn = providers.filter(p => !p.price);
+            });
+
+        // faction data
+        this
+            .cardsService
+            .getFactions()
+            .pipe(mergeMap(ef => ef.factions))
+            .subscribe(factions => {
+                this.faction = factions.find(f => f.id === this.card.factionId);
             });
     }
 
