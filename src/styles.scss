@@ -62,14 +62,6 @@ table {
 @import '~@angular/material/theming';
 @import 'src/styles/nucard-theme.scss';
 
-
-/* MARKDOWN STYLING */
-markdown {
-	em {
-		font-style: italic;
-	}
-}
-
 /* GENERAL STYLES */
 ::-webkit-scrollbar {
     width: 2px;
