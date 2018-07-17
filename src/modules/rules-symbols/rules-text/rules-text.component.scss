@@ -1,6 +1,10 @@
 ::ng-deep .rules-text {
+
     img {
+        display: inline-block;
         max-height: 16px;
+        position: relative;
+        top: 3px;
     }
 
     em {
