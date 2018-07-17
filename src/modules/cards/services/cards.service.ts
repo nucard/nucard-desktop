@@ -7,7 +7,7 @@ import {
     NcFaction,
     NcPrinting,
     NcRulesSymbol,
-} from '@nucard/models/dist';
+} from '@nucard/models';
 
 @Injectable({ providedIn: 'root' })
 export class CardsService {

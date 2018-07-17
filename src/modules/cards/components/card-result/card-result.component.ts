@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { NcCard } from '@nucard/models/dist';
+import { NcCard } from '@nucard/models';
 
 @Component({
     selector: 'nc-card-result',

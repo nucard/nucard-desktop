@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NcRulesSymbol } from '@nucard/models/dist';
+import { NcRulesSymbol } from '@nucard/models';
 
 @Injectable({
     providedIn: 'root'

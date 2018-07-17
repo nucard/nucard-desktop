@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { RulesSymbolsService } from './rules-symbols.service';
-import { NcRulesSymbol } from '../../../node_modules/@nucard/models/dist';
+import { NcRulesSymbol } from '@nucard/models';
 
 @Pipe({ name: 'rulesSymbols' })
 export class RulesSymbolsPipe implements PipeTransform {

@@ -7,7 +7,9 @@
         <h2 matLine>{{card.name}}</h2>
         <p class="types" matLine>
             <span *ngFor="let type of card.types">{{type}} </span> |
-            <span *ngFor="let subtype of card.subtypes">{{subtype}} </span>
+            <span *ngIf="card.subtypes.length"> |
+                <span *ngFor="let subtype of card.subtypes">{{subtype}} </span>
+            </span>
         </p>
         <div class="costs" matLine>
             <nc-rules-text [text]="card.cost"></nc-rules-text>
