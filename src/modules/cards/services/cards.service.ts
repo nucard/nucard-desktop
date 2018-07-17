@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
-import { NcCard, NcPrinting, NcRulesSymbol } from '@nucard/models/dist';
+import { NcCard, NcPrinting, NcRulesSymbol, NcExternalInfoProvider } from '@nucard/models/dist';
 
 @Injectable({ providedIn: 'root' })
 export class CardsService {
@@ -9,6 +9,12 @@ export class CardsService {
     private _cachedRulesSymbols: NcRulesSymbol[];
 
     constructor(private httpClient: HttpClient) { }
+
+    getExternalInfoProviders(cardId): Observable<NcExternalInfoProvider[]> {
+        return this
+            .httpClient
+            .get<NcExternalInfoProvider[]>(`${this._apiBaseUrl}/external-info-providers/c059d135-d4b6-493a-b98e-0eba0583d86e/${cardId}`);
+    }
 
     getRandomCard(): Observable<NcCard> {
         return this
@@ -38,6 +44,6 @@ export class CardsService {
     search(query: string): Observable<NcCard[]> {
         return this
             .httpClient
-            .get<NcCard[]>(`${this._apiBaseUrl}/cards/query/${query}`);
+            .get<NcCard[]>(`${this._apiBaseUrl}/cards/search/${query}`);
     }
 }

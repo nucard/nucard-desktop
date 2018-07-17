@@ -5,7 +5,13 @@
     mat-list-item {
         cursor: pointer;
     }
-    
+
+    div[matListAvatar] {
+        background-color: mat-color($nucard-primary);
+        width: 64px;
+        height: 64px;
+    }
+
     .card-faux-avatar {
         background-repeat: no-repeat;
         background-position: 50% 25%; 

@@ -1,6 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NcCard, NcPrinting, NcRulesSymbol } from '@nucard/models/dist';
+import {
+    NcCard,
+    NcPrinting,
+    NcRulesSymbol,
+    NcExternalInfoProvider
+} from '@nucard/models/dist';
 import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
+import { CardsService } from '../../services/cards.service';
 
 @Component({
     selector: 'nc-card-view',
@@ -9,10 +15,14 @@ import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
 })
 export class CardViewComponent implements OnInit {
     @Input() card: NcCard;
+    buyAt: NcExternalInfoProvider[] = [];
+    viewOn: NcExternalInfoProvider[] = [];
     _selectedPrinting: NcPrinting;
     private _selectedPrintingIndex = 0;
 
-    constructor(private keyboardEventsService: NgxKeyboardEventsService) { }
+    constructor(
+        private keyboardEventsService: NgxKeyboardEventsService,
+        private cardsService: CardsService) { }
 
     async ngOnInit() {
         this.setSelectedPrinting(this.card.printings[0]);
@@ -22,13 +32,21 @@ export class CardViewComponent implements OnInit {
         }
 
         this.keyboardEventsService.onKeyPressed.subscribe(key => {
+            let newIndex = this._selectedPrintingIndex;
+
             if (key.code === NgxKeyCode.RightArrow) {
+                newIndex++;
                 this.setSelectedPrintingIndex(this._selectedPrintingIndex + 1);
             }
 
             if (key.code === NgxKeyCode.LeftArrow) {
+                newIndex--;
                 this.setSelectedPrintingIndex(this._selectedPrintingIndex - 1);
             }
+
+            // mod because js is insane
+            newIndex = ((this.card.printings.length) + this.card.printings.length) % newIndex;
+            this.setSelectedPrinting(newIndex);
         });
     }
 
@@ -40,6 +58,15 @@ export class CardViewComponent implements OnInit {
                 this._selectedPrintingIndex = i;
             }
         }
+
+        // pull data from external info providers
+        this
+            .cardsService
+            .getExternalInfoProviders(this.card.id)
+            .subscribe(providers => {
+                this.buyAt = providers.filter(p => p.price);
+                this.viewOn = providers.filter(p => !p.price);
+            });
     }
 
     private setSelectedPrintingIndex(index) {

@@ -54,15 +54,15 @@
         </div>
     </div>
     <mat-divider></mat-divider>
-    <div class="flex-container external-links" *ngIf="_selectedPrinting.viewOn || _selectedPrinting.buyAt">
-        <div class="view-on-container">
+    <div class="flex-container external-links">
+        <div class="view-on-container" *ngIf="viewOn.length">
             <h3>View on</h3>
-            <nc-external-info-provider *ngFor="let provider of _selectedPrinting.viewOn" [provider]="provider"></nc-external-info-provider>
+            <nc-external-info-provider *ngFor="let provider of viewOn" [provider]="provider"></nc-external-info-provider>
         </div>
 
-        <div class="buy-at-container">
+        <div class="buy-at-container" *ngIf="buyAt.length">
             <h3>Buy at</h3>
-            <nc-external-info-provider *ngFor="let provider of _selectedPrinting.buyAt" [provider]="provider"></nc-external-info-provider>
+            <nc-external-info-provider *ngFor="let provider of buyAt" [provider]="provider"></nc-external-info-provider>
         </div>
     </div>
 </div>

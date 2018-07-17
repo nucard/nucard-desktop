@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { NcCard } from '@nucard/models/dist';
 
 @Component({
@@ -11,16 +12,23 @@ export class CardResultComponent {
     @Output() selectedCardChange = new EventEmitter<NcCard>();
     private _selectedCard: NcCard;
 
+    constructor(private domSanitizer: DomSanitizer) { }
+
     cardClick(card: NcCard) {
         this._selectedCard = card;
         this.selectedCardChange.emit(card);
     }
 
-    getCardThumbnail(card: NcCard) {
-        if (!card.thumbnail && !card.printings[0].image) {
-            return null;
+    getCardThumbnail(card: NcCard): SafeStyle {
+        let thumbnailUrl: string;
+
+        if (card.thumbnail) {
+            thumbnailUrl = card.thumbnail;
+        } else {
+            const firstPrintingWithImage = card.printings.find(p => p.image ? true : false);
+            thumbnailUrl = firstPrintingWithImage ? firstPrintingWithImage.image : '';
         }
 
-        return card.thumbnail ? `url(${card.thumbnail})` : `url(${card.printings[0].image})`;
+        return this.domSanitizer.bypassSecurityTrustStyle(`url(${thumbnailUrl})`);
     }
 }
