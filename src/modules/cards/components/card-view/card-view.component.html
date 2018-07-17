@@ -20,9 +20,12 @@
             </h2>
 
             <div>
-                <div *ngIf="card.faction" class="stat">
+                <div *ngIf="faction" class="stat">
                     <div class="mat-caption">Faction</div>
-                    <div class="mat-input">{{card.faction | titlecase}}</div>
+                    <div class="mat-input">
+                        <img class="faction-icon" [alt]="faction.name" [src]="faction.icon">
+                        <span class="faction-name">{{faction.name}}</span>
+                    </div>
                 </div>
 
                 <div *ngIf="card.cost" class="stat">

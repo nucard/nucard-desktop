@@ -34,7 +34,8 @@ export class CardsService {
     getRandomCard(): Observable<NcCard> {
         return this
             .httpClient
-            .get<NcCard>(`${this._apiBaseUrl}/cards/random`);
+            // fake userId
+            .get<NcCard>(`${this._apiBaseUrl}/cards/random/${this.DEBUG_USERID}`);
     }
 
     getRulesSymbols(): Observable<NcRulesSymbol[]> {

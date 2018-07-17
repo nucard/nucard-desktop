@@ -75,9 +75,13 @@ export class CardViewComponent implements OnInit {
         this
             .cardsService
             .getFactions()
-            .pipe(mergeMap(ef => ef.factions))
+            .pipe(mergeMap(extensionFactions => extensionFactions.map(ef => ef.factions)))
+            // .pipe(extensionFactions => mergeMap(ef => ef.factions))
             .subscribe(factions => {
+                console.log('card faction', this.card.factionId);
+                console.log('factions', factions);
                 this.faction = factions.find(f => f.id === this.card.factionId);
+                console.log('this faction', this.faction);
             });
     }
 
