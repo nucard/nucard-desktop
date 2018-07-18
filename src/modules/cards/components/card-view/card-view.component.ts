@@ -5,7 +5,7 @@ import {
     NcPrinting,
     NcRulesSymbol,
     NcExternalInfoProvider
-} from '@nucard/models';
+} from '@nucard/models/dist';
 import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
 import { mergeMap } from 'rxjs/operators';
 import { CardsService } from '../../services/cards.service';

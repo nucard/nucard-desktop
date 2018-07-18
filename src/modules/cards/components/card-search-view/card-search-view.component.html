@@ -10,8 +10,8 @@
             <div class="spinner">
                 <mat-progress-spinner *ngIf="isSearching" mode="indeterminate"></mat-progress-spinner>
             </div>
-            <nc-card-result *ngIf="cards && !isSearching" [cards]="cards" (selectedCardChange)="cardSelected($event)"></nc-card-result>
-            <nc-card-view *ngIf="selectedCard" [card]="selectedCard"></nc-card-view>
+            <nc-card-result *ngIf="searchResults && !isSearching" [searchResults]="searchResults" (selectedResultChange)="resultSelected($event)"></nc-card-result>
+            <nc-card-view *ngIf="selectedResult" [card]="selectedResult.card"></nc-card-view>
         </div>
     </div>
 </div>

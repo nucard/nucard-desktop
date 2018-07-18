@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { NcCard } from '@nucard/models';
+import { NcCard } from '@nucard/models/dist';
+import { SearchResultViewModel } from '../../services/search-result-view-models.service';
 
 @Component({
     selector: 'nc-card-result',
@@ -8,15 +9,15 @@ import { NcCard } from '@nucard/models';
     styleUrls: ['./card-result.component.scss']
 })
 export class CardResultComponent {
-    @Input() cards: NcCard[];
-    @Output() selectedCardChange = new EventEmitter<NcCard>();
-    private _selectedCard: NcCard;
+    @Input() searchResults: SearchResultViewModel[];
+    @Output() selectedResultChange = new EventEmitter<SearchResultViewModel>();
+    private _selectedResult: SearchResultViewModel;
 
     constructor(private domSanitizer: DomSanitizer) { }
 
-    cardClick(card: NcCard) {
-        this._selectedCard = card;
-        this.selectedCardChange.emit(card);
+    resultClick(result: SearchResultViewModel) {
+        this._selectedResult = result;
+        this.selectedResultChange.emit(result);
     }
 
     getCardThumbnail(card: NcCard): SafeStyle {

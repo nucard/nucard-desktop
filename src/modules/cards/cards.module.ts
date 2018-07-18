@@ -7,6 +7,7 @@ import { AppRoutingModule } from '../app/app-routing.module';
 import { RulesSymbolsModule } from '../rules-symbols/rules-symbols.module';
 import { SharedModule } from '../shared/shared.module';
 import { CardsService } from './services/cards.service';
+import { SearchResultViewModelsService } from './services/search-result-view-models.service';
 
 import { CardResultComponent } from './components/card-result/card-result.component';
 import { CardSearchViewComponent } from './components/card-search-view/card-search-view.component';
@@ -31,6 +32,9 @@ import { SearchBoxDirective } from './directives/search-box.directive';
         ExternalInfoProviderComponent,
         SearchBoxDirective,
     ],
-    providers: [CardsService]
+    providers: [
+        CardsService,
+        SearchResultViewModelsService,
+    ]
 })
 export class CardsModule { }

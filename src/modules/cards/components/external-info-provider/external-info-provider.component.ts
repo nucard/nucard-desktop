@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NcExternalInfoProvider } from '@nucard/models';
+import { NcExternalInfoProvider } from '@nucard/models/dist';
 import { UrlOpenerService } from '../../../shared/services/url-opener.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NcRulesSymbol } from '@nucard/models';
+import { NcRulesSymbol } from '@nucard/models/dist';
 import { CardsService } from '../../cards/services/cards.service';
 
 @Component({

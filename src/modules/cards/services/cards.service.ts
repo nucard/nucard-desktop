@@ -7,7 +7,8 @@ import {
     NcFaction,
     NcPrinting,
     NcRulesSymbol,
-} from '@nucard/models';
+    NcSearchResult,
+} from '@nucard/models/dist';
 
 @Injectable({ providedIn: 'root' })
 export class CardsService {
@@ -57,10 +58,9 @@ export class CardsService {
         return subject;
     }
 
-    search(query: string): Observable<NcCard[]> {
-        console.log('searching', query);
+    search(query: string): Observable<NcSearchResult[]> {
         return this
             .httpClient
-            .get<NcCard[]>(`${this._apiBaseUrl}/cards/search/${query}`);
+            .get<NcSearchResult[]>(`${this._apiBaseUrl}/cards/search/${query}`);
     }
 }

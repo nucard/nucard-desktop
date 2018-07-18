@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ElectronService } from '../shared/services/electron.service';
+import { ElectronService } from '../../shared/services/electron.service';
 import { TranslateService } from '@ngx-translate/core';
-import { AppConfig } from '../../environments/environment';
+import { AppConfig } from '../../../environments/environment';
 
 @Component({
     selector: 'nc-root',

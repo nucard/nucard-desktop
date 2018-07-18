@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NcCard } from '@nucard/models';
+import { NcCard, NcSearchResult } from '@nucard/models/dist';
 import { CardsService } from '../../services/cards.service';
+import { SearchResultViewModelsService, SearchResultViewModel } from '../../services/search-result-view-models.service';
 import { SearchBoxDirective } from '../../directives/search-box.directive';
 
 @Component({
@@ -12,15 +13,17 @@ export class CardSearchViewComponent implements OnInit {
     private _activeSearchDebounce: NodeJS.Timer;
     private _searchDebounceLengthMs = 300;
 
-    cards: NcCard[];
-    selectedCard: NcCard;
+    searchResults: SearchResultViewModel[];
+    selectedResult: SearchResultViewModel;
     searchPrompt = 'Try "Lightning Bolt"';
     query: string;
     isSearching = false;
 
     @ViewChild(SearchBoxDirective) searchBox: SearchBoxDirective;
 
-    constructor(private cardsService: CardsService) { }
+    constructor(
+        private cardsService: CardsService,
+        private searchResultViewModelsService: SearchResultViewModelsService) { }
 
     ngOnInit() {
         this.setSearchPrompt();
@@ -42,27 +45,27 @@ export class CardSearchViewComponent implements OnInit {
         // change the search prompt if they clear the box
         if (!this.query) {
             this.setSearchPrompt();
-            this.cards = null;
+            this.searchResults = null;
             this.isSearching = false;
             return;
         }
 
         this.isSearching = true;
-        this.selectedCard = null;
+        this.selectedResult = null;
 
         this._activeSearchDebounce = setTimeout(() => {
             this.cardsService
                 .search(this.query)
-                .subscribe(cards => {
-                    this.cards = cards;
+                .subscribe(searchResults => {
+                    this.searchResults = this.searchResultViewModelsService.transformNcSearchResults(searchResults);
                     this.isSearching = false;
                 });
         }, this._searchDebounceLengthMs);
     }
 
-    cardSelected(card: NcCard) {
-        this.cards = null;
-        this.selectedCard = card;
+    resultSelected(result: SearchResultViewModel) {
+        this.searchResults = null;
+        this.selectedResult = result;
         this.searchBox.blur();
     }
 }
