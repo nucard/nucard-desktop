@@ -15,7 +15,7 @@
                 <span *ngIf="card.rarity">
                     <strong>{{card.rarity}} </strong>
                 </span>
-                <span>{{card.types.join(' ')}} </span>
+                <span>{{card.types.join(' ') | titlecase}} </span>
                 <span *ngIf="card.subtypes && card.subtypes.length">: {{card.subtypes.join(' • ')}}</span>
             </h2>
 

@@ -10,7 +10,7 @@ export class RulesSymbolsService {
             return input;
         }
 
-        let result = input;
+        let result = input.toString();
 
         for (const ruleSymbol of ruleSymbols) {
             // can't use regexes directly here because of potentially unescaped characters in rules symbols

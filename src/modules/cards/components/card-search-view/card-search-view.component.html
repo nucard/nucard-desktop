@@ -11,7 +11,7 @@
                 <mat-progress-spinner *ngIf="isSearching" mode="indeterminate"></mat-progress-spinner>
             </div>
             <nc-card-result *ngIf="searchResults && !isSearching" [searchResults]="searchResults" (selectedResultChange)="resultSelected($event)"></nc-card-result>
-            <nc-card-view *ngIf="selectedResult" [card]="selectedResult.card"></nc-card-view>
+            <nc-card-view *ngIf="selectedResult" [extensionId]="selectedResult.extension.id" [card]="selectedResult.card"></nc-card-view>
         </div>
     </div>
 </div>

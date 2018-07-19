@@ -17,10 +17,13 @@ import { CardsService } from '../../services/cards.service';
 })
 export class CardViewComponent implements OnInit {
     @Input() card: NcCard;
+    @Input() extensionId: string;
+
+    // internal state
+    faction: NcFaction;
     buyAt: NcExternalInfoProvider[] = [];
     viewOn: NcExternalInfoProvider[] = [];
     _selectedPrinting: NcPrinting;
-    faction: NcFaction;
     private _selectedPrintingIndex = 0;
 
     constructor(
@@ -65,7 +68,7 @@ export class CardViewComponent implements OnInit {
         // pull data from external info providers
         this
             .cardsService
-            .getExternalInfoProviders(this.card.id)
+            .getExternalInfoProviders(this.extensionId, this.card.id)
             .subscribe(providers => {
                 this.buyAt = providers.filter(p => p.price);
                 this.viewOn = providers.filter(p => !p.price);

@@ -5,9 +5,9 @@
         </div>
         <h2 matLine>{{result.card.name}}</h2>
         <p class="types" matLine>
-            <span *ngFor="let type of result.card.types">{{type}} </span>
+            <span *ngFor="let type of result.card.types">{{type | titlecase}} </span>
             <span *ngIf="result.card.subtypes.length"> |
-                <span *ngFor="let subtype of result.card.subtypes">{{subtype}} </span>
+                <span *ngFor="let subtype of result.card.subtypes">{{subtype | titlecase}} </span>
             </span>
         </p>
         <div class="costs" matLine>
