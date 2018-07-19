@@ -12,8 +12,7 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class CardsService {
-    // private _apiBaseUrl = "https://nucard-api.herokuapp.com";
-    private _apiBaseUrl = "http://localhost:3000";
+    private _apiBaseUrl = "https://nucard-api.herokuapp.com";
     private _cachedRulesSymbols: NcRulesSymbol[];
 
     private DEBUG_USERID = '7b7a3a12-1904-43b2-ad45-d0f74825e322';
