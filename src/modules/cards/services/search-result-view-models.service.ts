@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NcCard, NcExtension, NcSearchResult } from '@nucard/models';
-import * as _ from 'lodash';
+import { NcCard, NcExtension, NcSearchResult } from '@nucard/models/dist';
 
 export class SearchResultViewModel {
     card: NcCard;
@@ -17,7 +16,7 @@ export class SearchResultViewModelsService {
         let viewModels: SearchResultViewModel[] = [];
 
         for (const result of results) {
-            viewModels = viewModels.concat(_.map(result.cards, c => {
+            viewModels = viewModels.concat(result.cards.map(c => {
                 return { extension: result.extension, card: c };
             }));
         }

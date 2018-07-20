@@ -38,7 +38,7 @@ function createWindow() {
     });
 
     serveApp();
-    mainWindow.webContents.toggleDevTools();
+    // mainWindow.webContents.toggleDevTools();
 
     // Emitted when the window is closed.
     mainWindow.on('closed', () => {
@@ -54,7 +54,7 @@ function cleanupContextMenu() {
 }
 
 function createSystemTrayButton() {
-    systemTrayIcon = new Tray('./logo.ico');
+    systemTrayIcon = new Tray(path.join(__dirname, 'logo.ico'));
     const contextMenu = Menu.buildFromTemplate([
         {
             label: 'Open',

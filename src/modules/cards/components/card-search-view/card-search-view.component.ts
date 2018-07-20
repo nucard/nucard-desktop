@@ -59,6 +59,10 @@ export class CardSearchViewComponent implements OnInit {
                 .subscribe(searchResults => {
                     this.searchResults = this.searchResultViewModelsService.transformNcSearchResults(searchResults);
                     this.isSearching = false;
+
+                    if (this.searchResults.length === 1) {
+                        this.resultSelected(this.searchResults[0]);
+                    }
                 });
         }, this._searchDebounceLengthMs);
     }

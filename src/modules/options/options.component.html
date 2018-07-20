@@ -2,11 +2,10 @@
   <h1>Preferences</h1>
 
   <div class="options-container">
-    <mat-checkbox color="primary">Start NuCard when my computer boots</mat-checkbox>
+    <mat-checkbox color="primary" (change)="isAutoLaunchEnabledChange($event)" [checked]="isAutoLaunchEnabled">Start NuCard when my computer boots</mat-checkbox>
   </div>
 
   <div class="buttons-container">
-    <button mat-raised-button routerLink="/">CANCEL</button>
-    <button mat-raised-button color="primary">SAVE</button>
+    <button mat-raised-button color="primary" routerLink="/">DONE</button>
   </div>
 </div>

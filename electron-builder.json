@@ -1,4 +1,6 @@
 {
+  "appId": "com.electron.nucard",
+  "copyright": "Copyright © 2018 Jammerware",
   "productName": "NuCard Desktop",
   "directories": {
     "output": "app-builds"
@@ -20,19 +22,19 @@
     "!tslint.json"
   ],
   "win": {
-    "icon": "dist",
+    "icon": "dist/assets/images/logo.ico",
     "target": [
       "portable"
     ]
   },
   "mac": {
-    "icon": "dist",
+    "icon": "dist/assets/images/logo.ico",
     "target": [
       "dmg"
     ]
   },
   "linux": {
-    "icon": "dist",
+    "icon": "dist/assets/images/logo.ico",
     "target": [
       "AppImage"
     ]

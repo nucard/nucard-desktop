@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { ElectronService } from './electron.service';
 import { shell } from 'electron';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class UrlOpenerService {
 
     constructor(private electronService: ElectronService) { }
