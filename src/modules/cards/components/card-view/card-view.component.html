@@ -5,29 +5,21 @@
             <ul *ngIf="card.printings.length > 1" class="printings-container">
                 <li *ngFor="let printing of card.printings" (click)="setSelectedPrinting(printing)">
                     <div *ngIf="_selectedPrinting.printedIn === printing.printedIn" class="selected-glow"></div>
-                    <img *ngIf="_selectedPrinting.printingIcon" [src]="printing.printingIcon">
+                    <img *ngIf="_selectedPrinting.printingIcon" [src]="_selectedPrinting.printingIcon" alt="Printing icon">
                 </li>
             </ul>
         </div>
         <div class="info-container">
             <h1>{{card.name}}</h1>
             <h2>
-                <span *ngIf="card.rarity">
-                    <strong>{{card.rarity}} </strong>
+                <span *ngIf="faction && faction.name">
+                    <strong>{{faction.name | titlecase}} </strong>
                 </span>
                 <span>{{card.types.join(' ') | titlecase}} </span>
-                <span *ngIf="card.subtypes && card.subtypes.length">: {{card.subtypes.join(' • ')}}</span>
+                <span *ngIf="card.subtypes && card.subtypes.length">: {{card.subtypes.join(' • ') | titlecase}}</span>
             </h2>
 
             <div>
-                <div *ngIf="faction" class="stat">
-                    <div class="mat-caption">Faction</div>
-                    <div class="mat-input">
-                        <img class="faction-icon" [alt]="faction.name" [src]="faction.icon">
-                        <span class="faction-name">{{faction.name}}</span>
-                    </div>
-                </div>
-
                 <div *ngIf="card.cost" class="stat">
                     <div class="mat-caption">Cost</div>
                     <div class="mat-input">
@@ -40,18 +32,23 @@
                     <nc-rules-text [text]="card.text"></nc-rules-text>
                 </div>
 
+                <div *ngIf="card.rarity" class="stat">
+                    <div class="mat-caption">Rarity</div>
+                    <div class="mat-input">{{card.rarity | titlecase}}</div>
+                </div>
+
                 <div class="stat" *ngIf="_selectedPrinting.artist">
                     <div class="mat-caption">Artist</div>
                     <div class="mat-input">{{_selectedPrinting.artist}}</div>
                 </div>
 
-                <div class="stat flavor-text" *ngIf="_selectedPrinting.flavorText">
-                    {{_selectedPrinting.flavorText}}
-                </div>
-
                 <div *ngIf="_selectedPrinting.printedIn" class="stat">
                     <div class="mat-caption">Printed in</div>
                     <div class="mat-input">{{_selectedPrinting.printedIn}}</div>
+                </div>
+
+                <div class="stat flavor-text" *ngIf="_selectedPrinting.flavorText">
+                    {{_selectedPrinting.flavorText}}
                 </div>
             </div>
         </div>

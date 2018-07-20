@@ -6,11 +6,12 @@ import { NcRulesSymbol } from '@nucard/models/dist';
 })
 export class RulesSymbolsService {
     public renderSymbols(input: string, ruleSymbols: NcRulesSymbol[]) {
+        let result = '';
         if (!input) {
-            return input;
+            return result;
         }
 
-        let result = input.toString();
+        result = input.toString();
 
         for (const ruleSymbol of ruleSymbols) {
             // can't use regexes directly here because of potentially unescaped characters in rules symbols
