@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { AppRoutingModule } from '../app/app-routing.module';
+import { ExtensionsModule } from '../extensions/extensions.module';
 import { OptionsComponent } from './options.component';
 import { AutoLaunchService } from './services/auto-launch.service';
 
@@ -11,6 +12,7 @@ import { AutoLaunchService } from './services/auto-launch.service';
         CommonModule,
         AppMaterialModule,
         AppRoutingModule,
+        ExtensionsModule,
     ],
     declarations: [OptionsComponent],
     providers: [AutoLaunchService],

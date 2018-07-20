@@ -5,7 +5,6 @@ import {
     NcCard,
     NcExternalInfoProvider,
     NcFaction,
-    NcPrinting,
     NcRulesSymbol,
     NcSearchResult,
 } from '@nucard/models/dist';

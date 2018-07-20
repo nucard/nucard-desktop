@@ -6,6 +6,7 @@ import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { ClickOnEnterDirective } from './directives/click-on-enter.directive';
 import { UrlOpenerService } from './services/url-opener.service';
 import { ElectronService } from './services/electron.service';
+import { NcApiService } from './services/nc-api.service';
 import { IfElectronDirective } from './directives/if-electron.directive';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { IfElectronDirective } from './directives/if-electron.directive';
     ],
     providers: [
         ElectronService,
+        NcApiService,
         UrlOpenerService,
     ]
 })
