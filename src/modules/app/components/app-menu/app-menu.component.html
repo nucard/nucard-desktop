@@ -3,6 +3,10 @@
         <button mat-menu-item routerLink="/card-search">Search</button>
         <button mat-menu-item routerLink="/preferences">Preferences</button>
         <button mat-menu-item routerLink="/about">About</button>
+        <ng-template ncIfElectron>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="appQuit()">Exit</button>
+        </ng-template>
     </mat-menu>
 
     <button mat-icon-button [matMenuTriggerFor]="appMenu">

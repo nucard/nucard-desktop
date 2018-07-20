@@ -6,6 +6,7 @@ import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { ClickOnEnterDirective } from './directives/click-on-enter.directive';
 import { UrlOpenerService } from './services/url-opener.service';
 import { ElectronService } from './services/electron.service';
+import { IfElectronDirective } from './directives/if-electron.directive';
 
 @NgModule({
     imports: [
@@ -21,9 +22,13 @@ import { ElectronService } from './services/electron.service';
             }
         }),
     ],
-    declarations: [ClickOnEnterDirective],
+    declarations: [
+        ClickOnEnterDirective,
+        IfElectronDirective,
+    ],
     exports: [
         ClickOnEnterDirective,
+        IfElectronDirective,
         MarkdownModule,
     ],
     providers: [
