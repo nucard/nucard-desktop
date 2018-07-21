@@ -1,10 +1,25 @@
 .options-component {
+    display: flex;
+    flex-direction: column;
+    h1 {
+        display: block;
+    }
+
+    mat-tab-group {
+        flex-grow: 1;
+    }
+
+    .options-container {
+        padding: 1.5rem;
+    }
+
     .buttons-container {
         margin-top: 2rem;
         float: right;
     
         button {
             margin-left: 4px;
+            float: right;
         }
     }
 }

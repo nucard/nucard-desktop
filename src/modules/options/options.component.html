@@ -1,10 +1,17 @@
 <div class="options-component">
     <h1>Preferences</h1>
-
-
-    <div class="options-container">
-        <mat-checkbox color="primary" (change)="isAutoLaunchEnabledChange($event)" [checked]="isAutoLaunchEnabled">Start NuCard when my computer boots</mat-checkbox>
-    </div>
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="EXTENSIONS">
+            <div class="options-container">
+                <nc-extensions></nc-extensions>
+            </div>
+        </mat-tab>
+        <mat-tab label="OTHER SETTINGS">
+            <div class="options-container">
+                <mat-checkbox color="primary" (change)="isAutoLaunchEnabledChange($event)" [checked]="isAutoLaunchEnabled">Start NuCard when my computer boots</mat-checkbox>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 
     <div class="buttons-container">
         <button mat-raised-button color="primary" routerLink="/">DONE</button>

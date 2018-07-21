@@ -1,0 +1,8 @@
+@import '~@angular/material/theming';
+@import 'src/styles/nucard-theme.scss';
+
+.extensions-component {
+    img[matListAvatar] {
+        background-color: #eee;
+    }
+}

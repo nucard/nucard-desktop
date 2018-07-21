@@ -1,3 +1,10 @@
-<p>
-  extensions works!
-</p>
+<div class="extensions-component">
+    <mat-list>
+        <mat-list-item *ngFor="let extension of userExtensions | async">
+            <img *ngIf="extension.logo" matListAvatar [src]="extension.logo" [alt]="extension.name">
+            <h3 mat-line>{{extension.name}}</h3>
+            <h4 mat-line>{{extension.gameName}}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+</div>
