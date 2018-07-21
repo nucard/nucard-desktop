@@ -13,6 +13,7 @@ export class CardSearchViewComponent implements OnInit {
     private _activeSearchDebounce: NodeJS.Timer;
     private _searchDebounceLengthMs = 300;
 
+    blark: NcSearchResult[];
     searchResults: SearchResultViewModel[];
     selectedResult: SearchResultViewModel;
     searchPrompt = 'Try "Lightning Bolt"';
@@ -57,6 +58,7 @@ export class CardSearchViewComponent implements OnInit {
             this.cardsService
                 .search(this.query)
                 .subscribe(searchResults => {
+                    this.blark = searchResults;
                     this.searchResults = this.searchResultViewModelsService.transformNcSearchResults(searchResults);
                     this.isSearching = false;
 

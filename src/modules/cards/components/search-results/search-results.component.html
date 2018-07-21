@@ -1,0 +1,24 @@
+<div class="search-results-component">
+    <mat-tab-group>
+        <mat-tab *ngFor="let result of searchResults" [label]="getTabLabel(result) | uppercase">
+            <mat-list>
+                <mat-list-item *ngFor="let card of result.cards" tabindex="0" (click)="resultClick(card, result.extension)" ncClickOnEnter>
+                    <div matListAvatar style="background-image: url('./assets/images/no-card-thumb.png');">
+                        <div class="card-faux-avatar" [style.background-image]="getCardThumbnail(card)"></div>
+                    </div>
+                    <h2 matLine>{{card.name}}</h2>
+                    <p class="types" matLine>
+                        <span *ngFor="let type of card.types">{{type | titlecase}} </span>
+                        <span *ngIf="card.subtypes.length"> |
+                            <span *ngFor="let subtype of card.subtypes">{{subtype | titlecase}} </span>
+                        </span>
+                    </p>
+                    <div class="costs" matLine>
+                        <nc-rules-text [text]="card.cost"></nc-rules-text>
+                    </div>
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-list>
+        </mat-tab>
+    </mat-tab-group>
+</div>
