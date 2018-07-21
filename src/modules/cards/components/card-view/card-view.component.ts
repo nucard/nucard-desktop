@@ -35,6 +35,20 @@ export class CardViewComponent implements OnInit {
     async ngOnInit() {
         this.setSelectedPrinting(this.card.printings[0]);
 
+        // faction data
+        if (this.card.factionId) {
+            this
+                .ncApiService
+                .getFactions(this.extensionId)
+                .subscribe(factions => {
+                    this.faction = factions.find(f => f.id === this.card.factionId);
+                });
+        }
+
+        this.configureKeyboardEvents();
+    }
+
+    private configureKeyboardEvents() {
         if (this.card.printings.length <= 1) {
             return;
         }
@@ -44,21 +58,19 @@ export class CardViewComponent implements OnInit {
 
             if (key.code === NgxKeyCode.RightArrow) {
                 newIndex++;
-                this.setSelectedPrintingIndex(this._selectedPrintingIndex + 1);
             }
 
             if (key.code === NgxKeyCode.LeftArrow) {
                 newIndex--;
-                this.setSelectedPrintingIndex(this._selectedPrintingIndex - 1);
             }
 
             // mod because js is insane
             newIndex = ((this.card.printings.length) + this.card.printings.length) % newIndex;
-            this.setSelectedPrinting(newIndex);
+            this.setSelectedPrintingIndex(newIndex);
         });
     }
 
-    setSelectedPrinting(printing) {
+    setSelectedPrinting(printing: NcPrinting) {
         this._selectedPrinting = printing;
 
         for (let i = 0; i < this.card.printings.length; i++) {
@@ -75,16 +87,6 @@ export class CardViewComponent implements OnInit {
                 this.buyAt = providers.filter(p => p.price);
                 this.viewOn = providers.filter(p => !p.price);
             });
-
-        // faction data
-        if (this.card.factionId) {
-            this
-                .ncApiService
-                .getFactions(this.extensionId)
-                .subscribe(factions => {
-                    this.faction = factions.find(f => f.id === this.card.factionId);
-                });
-        }
     }
 
     private setSelectedPrintingIndex(index) {
