@@ -47,6 +47,11 @@
                     <div class="mat-input">{{_selectedPrinting.printedIn}}</div>
                 </div>
 
+                <div *ngFor="let extraAttribute of card.extraAttributes || []" class="stat">
+                    <div class="mat-caption">{{extraAttribute.name}}</div>
+                    <div class="mat-input">{{extraAttribute.value}}</div>
+                </div>
+
                 <div class="stat flavor-text" *ngIf="_selectedPrinting.flavorText">
                     {{_selectedPrinting.flavorText}}
                 </div>

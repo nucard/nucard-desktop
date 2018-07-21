@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {
     NcCard,
     NcExtension,
+    NcFaction,
     NcRulesSymbol
 } from '@nucard/models';
 import { Observable, of } from 'rxjs';
@@ -20,5 +21,11 @@ export class NcApiService {
         return this
             .httpClient
             .get<NcExtension[]>(`${this._apiBaseUrl}/user/${this.DEBUG_USERID}/extensions`);
+    }
+
+    getFactions(extensionId: string): Observable<NcFaction[]> {
+        return this
+            .httpClient
+            .get<NcExtension[]>(`${this._apiBaseUrl}/factions/${extensionId}`);
     }
 }

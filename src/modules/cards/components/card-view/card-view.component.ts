@@ -9,6 +9,7 @@ import {
 import { NgxKeyboardEventsService, NgxKeyCode } from 'ngx-keyboard-events';
 import { mergeMap } from 'rxjs/operators';
 import { CardsService } from '../../services/cards.service';
+import { NcApiService } from '../../../shared/services/nc-api.service';
 
 @Component({
     selector: 'nc-card-view',
@@ -28,7 +29,8 @@ export class CardViewComponent implements OnInit {
 
     constructor(
         private keyboardEventsService: NgxKeyboardEventsService,
-        private cardsService: CardsService) { }
+        private cardsService: CardsService,
+        private ncApiService: NcApiService) { }
 
     async ngOnInit() {
         this.setSelectedPrinting(this.card.printings[0]);
@@ -75,14 +77,14 @@ export class CardViewComponent implements OnInit {
             });
 
         // faction data
-        this
-            .cardsService
-            .getFactions()
-            .pipe(mergeMap(extensionFactions => extensionFactions.map(ef => ef.factions)))
-            // .pipe(extensionFactions => mergeMap(ef => ef.factions))
-            .subscribe(factions => {
-                this.faction = factions.find(f => f.id === this.card.factionId);
-            });
+        if (this.card.factionId) {
+            this
+                .ncApiService
+                .getFactions(this.extensionId)
+                .subscribe(factions => {
+                    this.faction = factions.find(f => f.id === this.card.factionId);
+                });
+        }
     }
 
     private setSelectedPrintingIndex(index) {

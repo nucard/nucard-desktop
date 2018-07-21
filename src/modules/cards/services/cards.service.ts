@@ -24,16 +24,9 @@ export class CardsService {
             .get<NcExternalInfoProvider[]>(`${this._apiBaseUrl}/external-info-providers/${extensionId}/${cardId}`);
     }
 
-    getFactions(): Observable<Array<{ extensionId: string, factions: NcFaction[] }>> {
-        return this
-            .httpClient
-            .get<Array<{ extensionId: string, factions: NcFaction[] }>>(`${this._apiBaseUrl}/factions/${this.DEBUG_USERID}`);
-    }
-
     getRandomCard(): Observable<NcCard> {
         return this
             .httpClient
-            // fake userId
             .get<NcCard>(`${this._apiBaseUrl}/cards/random/${this.DEBUG_USERID}`);
     }
 
