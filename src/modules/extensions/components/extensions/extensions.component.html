@@ -4,6 +4,7 @@
             <img *ngIf="extension.logo" matListAvatar [src]="extension.logo" [alt]="extension.name">
             <h3 mat-line>{{extension.name}}</h3>
             <h4 mat-line>{{extension.gameName}}</h4>
+            <h4 mat-line>v{{extension.extensionVersion.major}}.{{extension.extensionVersion.minor}}.{{extension.extensionVersion.patch}}</h4>
             <mat-divider></mat-divider>
         </mat-list-item>
     </mat-list>
