@@ -37,7 +37,7 @@ function createWindow() {
         useContentSize: true,
     });
 
-    serveApp();
+    loadApp();
     // mainWindow.webContents.toggleDevTools();
 
     // Emitted when the window is closed.
@@ -111,7 +111,7 @@ function restoreSearchWindow() {
     }
 }
 
-function serveApp() {
+function loadApp() {
     if (serve) {
         require('electron-reload')(__dirname, {
             electron: require(`${__dirname}/node_modules/electron`)
