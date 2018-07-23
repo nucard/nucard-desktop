@@ -1,6 +1,6 @@
 <div class="search-results-component">
     <mat-tab-group>
-        <mat-tab *ngFor="let result of searchResults" [label]="getTabLabel(result) | uppercase">
+        <mat-tab *ngFor="let result of searchResults" [disabled]="result.cards.length === 0" [label]="getTabLabel(result) | uppercase">
             <mat-list>
                 <mat-list-item *ngFor="let card of result.cards" tabindex="0" (click)="resultClick(card, result.extension)" ncClickOnEnter>
                     <div matListAvatar style="background-image: url('./assets/images/no-card-thumb.png');">

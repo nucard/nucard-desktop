@@ -13,7 +13,7 @@
             <h1>{{card.name}}</h1>
             <h2>
                 <span *ngIf="faction && faction.name">
-                    <strong>{{faction.name | titlecase}} </strong>
+                    <strong>{{faction.name}} </strong>
                 </span>
                 <span>{{card.types.join(' ') | titlecase}} </span>
                 <span *ngIf="card.subtypes && card.subtypes.length">: {{card.subtypes.join(' • ') | titlecase}}</span>

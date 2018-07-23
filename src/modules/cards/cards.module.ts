@@ -9,7 +9,6 @@ import { SharedModule } from '../shared/shared.module';
 import { CardsService } from './services/cards.service';
 import { SearchResultViewModelsService } from './services/search-result-view-models.service';
 
-import { CardResultComponent } from './components/card-result/card-result.component';
 import { CardSearchViewComponent } from './components/card-search-view/card-search-view.component';
 import { CardViewComponent } from './components/card-view/card-view.component';
 import { ExternalInfoProviderComponent } from './components/external-info-provider/external-info-provider.component';
@@ -27,7 +26,6 @@ import { SearchBoxDirective } from './directives/search-box.directive';
         SharedModule,
     ],
     declarations: [
-        CardResultComponent,
         CardSearchViewComponent,
         CardViewComponent,
         ExternalInfoProviderComponent,

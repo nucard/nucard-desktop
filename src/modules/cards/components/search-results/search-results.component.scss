@@ -2,6 +2,10 @@
 @import 'src/styles/nucard-theme.scss';
 
 .search-results-component {
+    mat-tab-group {
+        height: 100%;
+    }
+    
     mat-list-item {
         cursor: pointer;
     }

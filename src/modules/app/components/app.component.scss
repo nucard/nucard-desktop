@@ -1,4 +1,13 @@
 .app-component {
-    padding: 1rem;
     max-height: 100vh;
+
+    .drag-wrapper {
+        cursor: pointer;
+        height: 12px;
+        -webkit-app-region: drag;
+    }
+
+    .app-wrapper {
+        padding: 1rem;
+    }
 }
