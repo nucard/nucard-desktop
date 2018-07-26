@@ -13,6 +13,5 @@ export class AboutComponent implements OnInit {
 
     ngOnInit() {
         this.version = this.electronService.appVersion;
-        console.log('the version is', this.version);
     }
 }
